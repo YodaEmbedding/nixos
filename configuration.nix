@@ -107,6 +107,42 @@
 
     libinput.enable = true;
     videoDrivers = [ "nvidia" ];
+
+    config = ''
+      Section "InputClass"
+        Identifier "My Mouse"
+        Driver "libinput"
+        MatchIsPointer "on"
+        MatchProduct "Logitech MX Vertical"
+        MatchVendor "Logitech"
+        Option "AccelProfile" "flat"
+        Option "AccelSpeed" "-0.75"
+        # Option "AccelerationNumerator" "1"
+        # Option "AccelerationDenominator" "1"
+        # Option "AccelerationThreshold" "0"
+      EndSection
+
+      Section "Device"
+          Identifier "Device0"
+          Driver     "nvidia"
+          VendorName "NVIDIA Corporation"
+          BoardName  "GeForce GTX 1060 6GB"
+	  # FIX I2C ERRORS
+          # http://www.ddcutil.com/nvidia/
+          # https://devtalk.nvidia.com/default/topic/572292/-solved-does-gddccontrol-work-for-anyone-here-nvidia-i2c-monitor-display-ddc/#4309293
+          Option "RegistryDwords" "RMUseSwI2c=0x01; RMI2cSpeed=100"
+	  # SCREEN TEARING
+          # https://bbs.archlinux.org/viewtopic.php?pid=1716977#p1716977
+          # Option "TripleBuffer" "True"
+          # Option "AllowIndirectGLXProtocol" "off"
+          # "ForceFullComposition" can make gaming low fps? Though this doesn't have "Full" in it...
+          # TODO shouldn't that be DVI-D-0 not I-1? Try it out.
+          # Option "metamodes" "nvidia-auto-select +0+0 {ForceCompositionPipeline=On}"
+          # Option "metamodes" "DVI-D-0: nvidia-auto-select {ForceCompositionPipeline=On}"
+          # Option "metamodes" "DVI-I-1: nvidia-auto-select {ForceCompositionPipeline=On}"
+          # Option "metamodes" "nvidia-auto-select @1920x1080 +0+0 {ViewPortIn=1920x1080, ViewPortOut=1920x1080+0+0, ForceFullCompositionPipeline=On}"
+      EndSection
+    '';
   };
 
   services.localtime.enable = true;
@@ -145,6 +181,11 @@
     shell = pkgs.zsh;
   };
 
+  security.sudo.configFile = ''
+    Defaults pwfeedback
+    Defaults timestamp_timeout=120
+  '';
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
@@ -180,7 +221,7 @@
         enableEigen = true;
         enableFfmpeg = true;
         enableGStreamer = true;
-        enableGtk2 = true; 
+        enableGtk2 = true;
         enableJPEG = true;
         enablePNG = true;
         enablePython = true;
@@ -211,6 +252,15 @@
     };
   };
 
+  environment.variables = rec{
+    BROWSER = "firefox";
+    EDITOR = "nvim";
+    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    # QT_QTA_PLATFORMTHEME = "qt5ct";
+    TERMINAL = "alacritty";
+    VISUAL = "nvim";
+  };
+
   environment.systemPackages = with pkgs; [
 
     (pkgs.callPackage (import ./pkgs/frece) {})
@@ -235,6 +285,7 @@
     fselect
     fzf
     gnupg
+    pinentry
     gparted
     htop
     lf
@@ -279,6 +330,7 @@
     stow
     termite
     tmux
+    tree-sitter
     vim
     vscode
 
@@ -303,6 +355,10 @@
     libjpeg
     libpng
     libtiff
+    glib
+    glibc
+    libcxx
+    musl
     jasper
     libwebp
     gtk2
@@ -314,6 +370,7 @@
     ccache
     autoconf
     clang
+    clang-tools
     llvm
     gcc
     ghc
@@ -322,7 +379,6 @@
     cmake
     go
     jdk
-    lua
     rustc
     texlive.combined.scheme-full
     cargo
@@ -332,6 +388,8 @@ nodejs
 yarn
 
     (python39.withPackages (ps: with ps; [
+      dbus-python
+      pygobject3
       matplotlib
       numpy
       # opencv4
@@ -351,6 +409,10 @@ yarn
       pynvim
       black
       isort
+    ]))
+
+    (lua.withPackages (ps: with ps; [
+      luarocks
     ]))
 
     # clangd
@@ -417,9 +479,14 @@ yarn
     rofi
     steam
     trash-cli
+    gvfs
+
+    xdotool
+    xclip
 
     ddccontrol
     wally-cli
+    libinput
 
   ];
 
