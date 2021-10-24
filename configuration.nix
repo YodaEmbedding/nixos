@@ -132,22 +132,18 @@
     # setLdLibraryPath = true;
   };
 
+  hardware.keyboard.zsa.enable = true;
+
+  # users.defaultUserShell = pkgs.zsh;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mulhaq = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "plugdev" ];
     createHome = true;
     shell = pkgs.zsh;
   };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # List services that you want to enable:
 
@@ -158,16 +154,68 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.cudaSupport = true;
-
-  environment.systemPackages = with pkgs; [
-
-    ntfs3g
-
+  fonts.fonts = with pkgs; [
     font-awesome
     iosevka
     noto-fonts
+    roboto
+    roboto-mono
+  ];
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+  programs.zsh.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.cudaSupport = true;
+
+  nixpkgs.config = {
+    packageOverrides = pkgs: rec {
+      opencv = pkgs.opencv.override (old: {
+        enableEigen = true;
+        enableFfmpeg = true;
+        enableGStreamer = true;
+        enableGtk2 = true; 
+        enableJPEG = true;
+        enablePNG = true;
+        enablePython = true;
+        enableTIFF = true;
+        # enableJPEG2K = true;
+      });
+      # opencv4 = pkgs.opencv4.override (old: {
+      #   enableContrib = true;
+      #   enableEigen = true;
+      #   enableJPEG = true;
+      #   enableOpenblas = true;
+      #   enablePNG = true;
+      #   enableTIFF = true;
+      #   enableWebP = true;
+
+      #   enableFfmpeg = true;
+      #   enableGPhoto2 = true;
+      #   enableGStreamer = true;
+      #   enableTbb = true;
+      #   # enableTesseract = true;
+
+      #   enableGtk2 = true;
+      #   enableGtk3 = true;
+      #   enableIpp = true;
+      #   enablePython = true;
+      #   enableUnfree = true;
+      # });
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+
+    (pkgs.callPackage (import ./pkgs/frece) {})
+
+    ntfs3g
 
     man
 
@@ -236,47 +284,74 @@
 
     boost
     cudatoolkit
+    nvidia-optical-flow-sdk
+    ffmpeg
+    gst_all_1.gst-plugins-bad
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-ugly
+    libgphoto2
     libGL
     libGLU
+    tbb
+    libllvm
+    libcxx
+    libcxxabi
     vulkan-headers
     vulkan-tools
-    ffmpeg
 
-# libjpeg
-# libpng
-# libtiff
-# libwebp
-# gtk2
-# gtk3
-# openblas
+    libjpeg
+    libpng
+    libtiff
+    jasper
+    libwebp
+    gtk2
+    gtk3
+    openblas
+    # tesseract
+    # leptonica
 
+    ccache
     autoconf
-    cargo
     clang
+    llvm
     gcc
     ghc
     gnumake
+    ninja
+    cmake
     go
     jdk
     lua
     rustc
+    texlive.combined.scheme-full
+    cargo
+sqlite
+# nodePackages.npm
+nodejs
+yarn
 
-    python39
-    python39Packages.matplotlib
-    python39Packages.numpy
-    python39Packages.pandas
-    python39Packages.pip
-    python39Packages.poetry
-    python39Packages.ptpython
-    python39Packages.pytest
-    python39Packages.pytorch
-    python39Packages.pytorch-lightning
-    python39Packages.scipy
-    python39Packages.seaborn
-    python39Packages.tensorflow-tensorboard
-    python39Packages.tensorflowWithCuda
-    python39Packages.torchvision
-    python39Packages.virtualenv
+    (python39.withPackages (ps: with ps; [
+      matplotlib
+      numpy
+      # opencv4
+      pandas
+      pip
+      poetry
+      ptpython
+      pytest
+      pytorch
+      pytorch-lightning
+      scipy
+      seaborn
+      tensorflow-tensorboard
+      # tensorflowWithCuda
+      torchvision
+      virtualenv
+      pynvim
+      black
+      isort
+    ]))
 
     # clangd
     haskell-language-server
@@ -294,7 +369,8 @@
     # TODO compile OpenCV with more flags
     # https://discourse.nixos.org/t/how-to-set-up-opencv4-with-python-bindings-and-a-gui/11998/9
     cudnn
-    opencv
+    # opencv
+    # opencv4
     eigen
 
     exiftool
@@ -302,14 +378,14 @@
     maim
     scrot
 
-    darktable
-    geeqie
-    gimp
-    gimpPlugins.resynthesizer
-    gthumb
-    krita
-    photoqt
-    qimgv
+    # darktable
+    # geeqie
+    # gimp
+    # gimpPlugins.resynthesizer
+    # gthumb
+    # krita
+    # photoqt
+    # qimgv
 
     libsForQt5.okular
     mpv
