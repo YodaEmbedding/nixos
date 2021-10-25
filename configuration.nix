@@ -69,6 +69,7 @@
   time.timeZone = "America/Vancouver";
 
   networking.hostName = "PC-Mordor-NixOS";
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -186,6 +187,12 @@
     Defaults timestamp_timeout=120
   '';
 
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.lightdm.enableGnomeKeyring = true;
+  # ssh.startAgent = true;
+
+  services.gvfs.enable = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
@@ -217,6 +224,10 @@
 
   nixpkgs.config = {
     packageOverrides = pkgs: rec {
+      # neovim = pkgs.neovim.override (
+      #   pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins:
+      #     pkgs.tree-sitter.allGrammars)
+      # );
       opencv = pkgs.opencv.override (old: {
         enableEigen = true;
         enableFfmpeg = true;
@@ -249,17 +260,45 @@
       #   enablePython = true;
       #   enableUnfree = true;
       # });
+      # thunar = (pkgs.xfce.thunar.override {
+      #   thunarPlugins = [
+      #     pkgs.xfce.thunar-archive-plugin
+      #     pkgs.xfce.thunar-dropbox-plugin
+      #     pkgs.xfce.thunar-volman
+      #   ];
+      # });
     };
   };
 
-  environment.variables = rec{
+  environment.variables = rec {
     BROWSER = "firefox";
     EDITOR = "nvim";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-    # QT_QTA_PLATFORMTHEME = "qt5ct";
+    QT_QTA_PLATFORMTHEME = "qt5ct";
     TERMINAL = "alacritty";
     VISUAL = "nvim";
   };
+
+  environment.etc."xdg/gtk-3.0/settings.ini".text = ''
+    [Settings]
+    gtk-font-name=Noto Sans Regular 10
+    gtk-theme-name=Adapta-Nokto-Eta
+    gtk-icon-theme-name=breeze-dark
+    gtk-fallback-icon-theme=gnome
+    gtk-cursor-theme-name=Breeze_Snow
+    gtk-toolbar-style=GTK_TOOLBAR_BOTH
+    gtk-menu-images=1
+    gtk-button-images=1
+    gtk-primary-button-warps-slider=0
+    gtk-application-prefer-dark-theme=1
+    gtk-cursor-theme-size=0
+    gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+    gtk-enable-event-sounds=1
+    gtk-enable-input-feedback-sounds=1
+    gtk-xft-antialias=1
+    gtk-xft-hinting=1
+    gtk-xft-hintstyle=hintfull
+  '';
 
   environment.systemPackages = with pkgs; [
 
@@ -297,13 +336,13 @@
     ssh-copy-id
     sshpass
     todo-txt-cli
-    unixtools.col
-    unixtools.fdisk
-    unixtools.fsck
-    unixtools.ping
-    unixtools.route
-    unixtools.top
-    unixtools.watch
+    # unixtools.col
+    # unixtools.fdisk
+    # unixtools.fsck
+    # unixtools.ping
+    # unixtools.route
+    # unixtools.top
+    # unixtools.watch
     wget
     zinit
     zoxide
@@ -314,10 +353,14 @@
 
     dunst
     i3
+    xfce.xfconf
     i3lock-color
+    breeze-icons
     pavucontrol
     picom
     polybar
+    adapta-gtk-theme
+    qt5ct
 
     alacritty
     binutils
@@ -372,6 +415,7 @@
     clang
     clang-tools
     llvm
+# llvmPackages_rocm.llvm
     gcc
     ghc
     gnumake
@@ -380,6 +424,7 @@
     go
     jdk
     rustc
+nim
     texlive.combined.scheme-full
     cargo
 sqlite
@@ -387,33 +432,10 @@ sqlite
 nodejs
 yarn
 
-    (python39.withPackages (ps: with ps; [
-      dbus-python
-      pygobject3
-      matplotlib
-      numpy
-      # opencv4
-      pandas
-      pip
-      poetry
-      ptpython
-      pytest
-      pytorch
-      pytorch-lightning
-      scipy
-      seaborn
-      tensorflow-tensorboard
-      # tensorflowWithCuda
-      torchvision
-      virtualenv
-      pynvim
-      black
-      isort
-    ]))
-
-    (lua.withPackages (ps: with ps; [
-      luarocks
-    ]))
+    lua
+    lua5_1
+    lua51Packages.luarocks
+    luajit
 
     # clangd
     haskell-language-server
@@ -431,9 +453,36 @@ yarn
     # TODO compile OpenCV with more flags
     # https://discourse.nixos.org/t/how-to-set-up-opencv4-with-python-bindings-and-a-gui/11998/9
     cudnn
-    # opencv
-    # opencv4
     eigen
+    opencv
+    opencv4
+
+    (python39.withPackages (ps: with ps; [
+      beautifulsoup4
+      dbus-python
+      pygobject3
+      matplotlib
+      numpy
+      # opencv4
+      pandas
+      pip
+      poetry
+      ptpython
+      pytest
+      pytorch
+      pytorch-lightning
+      scipy
+      seaborn
+      tensorflow-tensorboard
+      tensorflowWithCuda
+      torchvision
+      virtualenv
+      pillow
+      requests
+      pynvim
+      black
+      isort
+    ]))
 
     exiftool
     imagemagick
@@ -449,19 +498,22 @@ yarn
     # photoqt
     # qimgv
 
-    libsForQt5.okular
     mpv
+    okular
     spotify
     vlc
     youtube-dl
     zathura
 
-    # https://nixos.org/manual/nixos/stable/index.html#sec-xfce
-    # TODO Should not be here...?
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    xfce.thunar-dropbox-plugin
-    xfce.thunar-volman
+    # shared-mime-info
+    (xfce.thunar.override {
+      thunarPlugins = [
+        xfce.thunar-archive-plugin
+        xfce.thunar-dropbox-plugin
+        xfce.thunar-volman
+      ];
+    })
+    xfce.tumbler
 
     discord
     skypeforlinux
@@ -473,13 +525,18 @@ yarn
     firefox
     google-chrome
     obs-studio
-    pass
+    (pass.withExtensions (ext: with ext; [
+      # pass-import
+      pass-otp
+    ])) 
+    zbar
     qbittorrent
     redshift
     rofi
     steam
     trash-cli
     gvfs
+    openfortivpn
 
     xdotool
     xclip
