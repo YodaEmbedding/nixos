@@ -224,10 +224,12 @@
 
   nixpkgs.config = {
     packageOverrides = pkgs: rec {
+
       # neovim = pkgs.neovim.override (
       #   pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins:
       #     pkgs.tree-sitter.allGrammars)
       # );
+
       opencv = pkgs.opencv.override (old: {
         enableEigen = true;
         enableFfmpeg = true;
@@ -239,6 +241,7 @@
         enableTIFF = true;
         # enableJPEG2K = true;
       });
+
       # opencv4 = pkgs.opencv4.override (old: {
       #   enableContrib = true;
       #   enableEigen = true;
@@ -260,6 +263,7 @@
       #   enablePython = true;
       #   enableUnfree = true;
       # });
+
       # thunar = (pkgs.xfce.thunar.override {
       #   thunarPlugins = [
       #     pkgs.xfce.thunar-archive-plugin
@@ -267,6 +271,7 @@
       #     pkgs.xfce.thunar-volman
       #   ];
       # });
+
     };
   };
 
@@ -324,43 +329,42 @@
     fselect
     fzf
     gnupg
-    pinentry
     gparted
     htop
     lf
     neofetch
     parted
     perl532Packages.vidir
+    pinentry
     ranger
     ripgrep
     ssh-copy-id
     sshpass
     todo-txt-cli
+    wget
+    zinit
+    zoxide
+    zsh
+
     # unixtools.col
     # unixtools.fdisk
     # unixtools.fsck
     # unixtools.ping
     # unixtools.route
     # unixtools.top
-    # unixtools.watch
-    wget
-    zinit
-    zoxide
-    zsh
-
     # unixtools.util-linux
-    # ...
+    # unixtools.watch
 
+    adapta-gtk-theme
+    breeze-icons
     dunst
     i3
-    xfce.xfconf
     i3lock-color
-    breeze-icons
     pavucontrol
     picom
     polybar
-    adapta-gtk-theme
     qt5ct
+    xfce.xfconf
 
     alacritty
     binutils
@@ -379,62 +383,61 @@
 
     boost
     cudatoolkit
-    nvidia-optical-flow-sdk
     ffmpeg
     gst_all_1.gst-plugins-bad
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
     gst_all_1.gst-plugins-ugly
-    libgphoto2
     libGL
     libGLU
-    tbb
-    libllvm
     libcxx
     libcxxabi
+    libgphoto2
+    libllvm
+    nvidia-optical-flow-sdk
+    tbb
     vulkan-headers
     vulkan-tools
 
+    glib
+    glibc
+    gtk2
+    gtk3
+    jasper
+    libcxx
     libjpeg
     libpng
     libtiff
-    glib
-    glibc
-    libcxx
-    musl
-    jasper
     libwebp
-    gtk2
-    gtk3
+    musl
     openblas
+
     # tesseract
     # leptonica
 
-    ccache
     autoconf
+    cargo
+    ccache
     clang
     clang-tools
-    llvm
-# llvmPackages_rocm.llvm
+    cmake
     gcc
     ghc
     gnumake
-    ninja
-    cmake
     go
     jdk
+    llvm
+    nim
+    ninja
+    nodejs
     rustc
-nim
+    sqlite
     texlive.combined.scheme-full
-    cargo
-sqlite
-# nodePackages.npm
-nodejs
-yarn
+    yarn
 
     lua
-    lua5_1
     lua51Packages.luarocks
+    lua5_1
     luajit
 
     # clangd
@@ -442,11 +445,11 @@ yarn
     nodePackages.bash-language-server
     nodePackages.diagnostic-languageserver
     nodePackages.pyright
+    nodePackages.typescript-language-server
+    nodePackages.vim-language-server
     nodePackages.vscode-html-languageserver-bin
     nodePackages.vscode-json-languageserver
     nodePackages.yaml-language-server
-    nodePackages.typescript-language-server
-    nodePackages.vim-language-server
     rust-analyzer
     sumneko-lua-language-server
 
@@ -459,29 +462,29 @@ yarn
 
     (python39.withPackages (ps: with ps; [
       beautifulsoup4
+      black
       dbus-python
-      pygobject3
+      isort
       matplotlib
       numpy
-      # opencv4
+      opencv4
       pandas
+      pillow
       pip
       poetry
       ptpython
+      pygobject3
+      pynvim
       pytest
       pytorch
       pytorch-lightning
+      requests
       scipy
       seaborn
       tensorflow-tensorboard
       tensorflowWithCuda
       torchvision
       virtualenv
-      pillow
-      requests
-      pynvim
-      black
-      isort
     ]))
 
     exiftool
@@ -525,25 +528,25 @@ yarn
     firefox
     google-chrome
     obs-studio
+    gvfs
+    openfortivpn
     (pass.withExtensions (ext: with ext; [
       # pass-import
       pass-otp
-    ])) 
-    zbar
+    ]))
     qbittorrent
     redshift
     rofi
     steam
     trash-cli
-    gvfs
-    openfortivpn
+    zbar
 
-    xdotool
     xclip
+    xdotool
 
     ddccontrol
-    wally-cli
     libinput
+    wally-cli
 
   ];
 
