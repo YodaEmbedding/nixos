@@ -153,13 +153,23 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  sound.enable = true;
-  hardware.pulseaudio = {
-    enable = true;
-    support32Bit = true;
-  };
+  # sound.enable = true;
 
-  # TODO pipewire
+  # hardware.pulseaudio = {
+  #   enable = true;
+  #   support32Bit = true;
+  # };
+
+  security.rtkit.enable = true;
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    jack.enable = true;
+    pulse.enable = true;
+    socketActivation = true;
+  };
 
   hardware.opengl = {
     enable = true;
@@ -230,17 +240,17 @@
       #     pkgs.tree-sitter.allGrammars)
       # );
 
-      opencv = pkgs.opencv.override (old: {
-        enableEigen = true;
-        enableFfmpeg = true;
-        enableGStreamer = true;
-        enableGtk2 = true;
-        enableJPEG = true;
-        enablePNG = true;
-        enablePython = true;
-        enableTIFF = true;
-        # enableJPEG2K = true;
-      });
+      # opencv = pkgs.opencv.override (old: {
+      #   enableEigen = true;
+      #   enableFfmpeg = true;
+      #   enableGStreamer = true;
+      #   enableGtk2 = true;
+      #   enableJPEG = true;
+      #   enablePNG = true;
+      #   enablePython = true;
+      #   enableTIFF = true;
+      #   # enableJPEG2K = true;
+      # });
 
       # opencv4 = pkgs.opencv4.override (old: {
       #   enableContrib = true;
@@ -325,6 +335,8 @@
     delta
     fasd
     fd
+    file
+    fping
     fselect
     fzf
     gnupg
@@ -337,6 +349,7 @@
     pinentry
     ranger
     ripgrep
+    sd
     ssh-copy-id
     sshpass
     todo-txt-cli
@@ -361,12 +374,22 @@
     i3
     i3lock-color
     lxappearance
-    pavucontrol
     picom
     polybar
     qt5ct
     xfce.xfconf
     xorg.xcursorthemes
+
+    alsa-utils
+    ddccontrol
+    jack2
+    libinput
+    pavucontrol
+    pulseaudio
+    wally-cli
+
+    xclip
+    xdotool
 
     alacritty
     binutils
@@ -462,6 +485,38 @@
     opencv
     opencv4
 
+    # (pkgs.opencv.override (old: {
+    #   enableEigen = true;
+    #   enableFfmpeg = true;
+    #   enableGStreamer = true;
+    #   enableGtk2 = true;
+    #   enableJPEG = true;
+    #   enablePNG = true;
+    #   enablePython = true;
+    #   enableTIFF = true;
+    #   # enableJPEG2K = true;
+    # }))
+
+    # (pkgs.opencv4.override (old: {
+    #   enableContrib = true;
+    #   enableEigen = true;
+    #   enableJPEG = true;
+    #   enableOpenblas = true;
+    #   enablePNG = true;
+    #   enableTIFF = true;
+    #   enableWebP = true;
+    #   enableFfmpeg = true;
+    #   enableGPhoto2 = true;
+    #   enableGStreamer = true;
+    #   enableTbb = true;
+    #   # enableTesseract = true;
+    #   enableGtk2 = true;
+    #   enableGtk3 = true;
+    #   enableIpp = true;
+    #   enablePython = true;
+    #   enableUnfree = true;
+    # }))
+
     (python39.withPackages (ps: with ps; [
       beautifulsoup4
       black
@@ -495,6 +550,7 @@
     scrot
 
     darktable
+    feh
     geeqie
     gimp
     gimpPlugins.resynthesizer
@@ -510,7 +566,6 @@
     youtube-dl
     zathura
 
-    # shared-mime-info
     (xfce.thunar.override {
       thunarPlugins = [
         xfce.thunar-archive-plugin
@@ -518,37 +573,34 @@
         xfce.thunar-volman
       ];
     })
+
+    # shared-mime-info
     xfce.tumbler
 
     discord
     skypeforlinux
     zoom
 
+    (pass.withExtensions (ext: with ext; [
+      # pass-import
+      pass-otp
+    ]))
+
     anki
     copyq
     dropbox
     firefox
     google-chrome
-    obs-studio
     gvfs
+    obs-studio
     openfortivpn
-    (pass.withExtensions (ext: with ext; [
-      # pass-import
-      pass-otp
-    ]))
+    playerctl
     qbittorrent
     redshift
     rofi
     steam
     trash-cli
     zbar
-
-    xclip
-    xdotool
-
-    ddccontrol
-    libinput
-    wally-cli
 
   ];
 
