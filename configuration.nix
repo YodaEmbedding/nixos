@@ -334,6 +334,7 @@
   environment.systemPackages = with pkgs; [
 
     (pkgs.callPackage (import ./pkgs/frece) {})
+    (pkgs.callPackage (import ./pkgs/zhumu) {})
 
     ntfs3g
 
