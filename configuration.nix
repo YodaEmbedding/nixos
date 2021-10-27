@@ -212,13 +212,26 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableExtensionPack = true;
+  };
+
+  users.extraGroups.vboxusers.members = [
+    "mulhaq"
+  ];
+
   fonts.fonts = with pkgs; [
     font-awesome
     iosevka
     noto-fonts
+    noto-fonts-cjk
     roboto
     roboto-mono
   ];
+
+  # TODO does this do anything
+  # systemd.services.dunst.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -273,6 +286,10 @@
       #   enablePython = true;
       #   enableUnfree = true;
       # });
+
+      polybar = (pkgs.polybar.override {
+        i3Support = true;
+      });
 
       # thunar = (pkgs.xfce.thunar.override {
       #   thunarPlugins = [
@@ -381,12 +398,26 @@
     xorg.xcursorthemes
 
     alsa-utils
+    cadence
     ddccontrol
     jack2
     libinput
+    libnotify
+    pasystray
     pavucontrol
     pulseaudio
     wally-cli
+
+    # (wineWowPackages.full.override {
+    #   wineRelease = "staging";
+    #   mingwSupport = true;
+    # })
+    # (winetricks.override {
+    #   wine = wineWowPackages.staging;
+    # })
+
+    # lutris
+    # steam
 
     xclip
     xdotool
@@ -519,6 +550,7 @@
 
     (python39.withPackages (ps: with ps; [
       beautifulsoup4
+      bitarray
       black
       dbus-python
       isort
@@ -579,7 +611,7 @@
 
     discord
     skypeforlinux
-    zoom
+    zoom-us
 
     (pass.withExtensions (ext: with ext; [
       # pass-import
