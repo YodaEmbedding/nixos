@@ -7,68 +7,12 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./hosts/pc_mordor
   ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.supportedFilesystems = [ "ntfs" ];
-
-  # fileSystems."/" = {
-  #   device = "/dev/disk/by-label/nixos";
-  #   fsType = "ext4";
-  #   options = [ "rw" "relatime" "data=ordered" ];
-  # };
-
-  fileSystems."/".options = [ "rw" "relatime" "data=ordered" ];
-
-  fileSystems."/mnt/archlinux" = {
-    device = "/dev/disk/by-label/archlinux";
-    fsType = "ext4";
-    options = [ "rw" "relatime" "data=ordered" ];
-  };
-
-  fileSystems."/mnt/windows" = {
-    device = "/dev/disk/by-label/windows";
-    fsType = "ntfs";
-    options = [
-      "defaults" "windows_names" "locale=en_US.utf8"
-      "uid=1000" "gid=1000"
-    ];
-  };
-
-  fileSystems."/mnt/data" = {
-    device = "/dev/disk/by-label/data";
-    fsType = "ext4";
-    options = [ "rw" "relatime" "data=ordered" ];
-  };
-
-  fileSystems."/mnt/data2" = {
-    device = "/dev/disk/by-label/data2";
-    fsType = "ext4";
-    options = [ "rw" "relatime" "data=ordered" ];
-  };
-
-  fileSystems."/mnt/data3" = {
-    device = "/dev/disk/by-label/data3";
-    fsType = "ext4";
-    options = [ "rw" "relatime" "data=ordered" ];
-  };
-
-  fileSystems."/mnt/data4" = {
-    device = "/dev/disk/by-label/HDDP2";
-    # device = "/dev/disk/by-label/data4";
-    fsType = "ntfs";
-    options = [
-      "defaults" "windows_names" "locale=en_US.utf8"
-      "uid=1000" "gid=1000"
-    ];
-  };
-
-  time.timeZone = "America/Vancouver";
-
-  networking.hostName = "PC-Mordor-NixOS";
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -107,44 +51,7 @@
     windowManager.i3.enable = true;
 
     libinput.enable = true;
-    videoDrivers = [ "nvidia" ];
   };
-
-  services.xserver.config = ''
-    Section "InputClass"
-      Identifier "My Mouse"
-      Driver "libinput"
-      MatchIsPointer "on"
-      MatchProduct "Logitech MX Vertical"
-      MatchVendor "Logitech"
-      Option "AccelProfile" "flat"
-      Option "AccelSpeed" "-0.75"
-      # Option "AccelerationNumerator" "1"
-      # Option "AccelerationDenominator" "1"
-      # Option "AccelerationThreshold" "0"
-    EndSection
-
-    Section "Device"
-      Identifier "Device0"
-      Driver     "nvidia"
-      VendorName "NVIDIA Corporation"
-      BoardName  "GeForce GTX 1060 6GB"
-      # FIX I2C ERRORS
-      # http://www.ddcutil.com/nvidia/
-      # https://devtalk.nvidia.com/default/topic/572292/-solved-does-gddccontrol-work-for-anyone-here-nvidia-i2c-monitor-display-ddc/#4309293
-      Option "RegistryDwords" "RMUseSwI2c=0x01; RMI2cSpeed=100"
-      # SCREEN TEARING
-      # https://bbs.archlinux.org/viewtopic.php?pid=1716977#p1716977
-      # Option "TripleBuffer" "True"
-      # Option "AllowIndirectGLXProtocol" "off"
-      # "ForceFullComposition" can make gaming low fps? Though this doesn't have "Full" in it...
-      # TODO shouldn't that be DVI-D-0 not I-1? Try it out.
-      # Option "metamodes" "nvidia-auto-select +0+0 {ForceCompositionPipeline=On}"
-      # Option "metamodes" "DVI-D-0: nvidia-auto-select {ForceCompositionPipeline=On}"
-      # Option "metamodes" "DVI-I-1: nvidia-auto-select {ForceCompositionPipeline=On}"
-      # Option "metamodes" "nvidia-auto-select @1920x1080 +0+0 {ViewPortIn=1920x1080, ViewPortOut=1920x1080+0+0, ForceFullCompositionPipeline=On}"
-    EndSection
-  '';
 
   services.localtime.enable = true;
 
@@ -178,8 +85,6 @@
     # extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
     # setLdLibraryPath = true;
   };
-
-  hardware.keyboard.zsa.enable = true;
 
   # users.defaultUserShell = pkgs.zsh;
 
