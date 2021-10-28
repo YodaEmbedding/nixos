@@ -209,7 +209,7 @@
     BROWSER = "firefox";
     EDITOR = "nvim";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-    QT_QTA_PLATFORMTHEME = "qt5ct";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
     TERMINAL = "alacritty";
     VISUAL = "nvim";
   };
