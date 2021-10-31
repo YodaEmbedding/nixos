@@ -76,6 +76,7 @@ with pkgs; [
   jack2
   libinput
   libnotify
+  pamixer
   pasystray
   pavucontrol
   pulseaudio
