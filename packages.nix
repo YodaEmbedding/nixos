@@ -3,6 +3,11 @@
   ...
 }:
 
+with pkgs;
+let
+  python = python39;
+  pythonPackages = python39Packages;
+in
 with pkgs; [
 
   (pkgs.callPackage (import ./pkgs/frece) {})
@@ -187,7 +192,7 @@ with pkgs; [
   eigen
   opencv4
 
-  (python39.withPackages (ps: with ps; [
+  (python.withPackages (ps: with ps; [
     beautifulsoup4
     bitarray
     black
