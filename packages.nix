@@ -22,6 +22,10 @@ let
     enableFfmpeg    = true;
   };
 
+  qimgv_override = (qimgv.overrideAttrs (old: {
+    buildInputs = old.buildInputs ++ [ cudatoolkit ];
+  }));
+
 in
 with pkgs; [
 
@@ -248,7 +252,7 @@ with pkgs; [
   gthumb
   krita
   photoqt
-  # qimgv
+  qimgv_override
 
   # ardour
   # guitarix
