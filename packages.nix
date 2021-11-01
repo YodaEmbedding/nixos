@@ -7,6 +7,21 @@ with pkgs;
 let
   python = python39;
   pythonPackages = python39Packages;
+
+  opencv4_override = opencv4.override {
+    enableUnfree    = true;
+    enableGtk3      = true;
+    enableFfmpeg    = true;
+    enablePython    = true;
+    pythonPackages  = pythonPackages;
+  };
+
+  opencv4_python_override = pythonPackages.opencv4.override {
+    enableUnfree    = true;
+    enableGtk3      = true;
+    enableFfmpeg    = true;
+  };
+
 in
 with pkgs; [
 
@@ -190,7 +205,7 @@ with pkgs; [
 
   cudnn
   eigen
-  opencv4
+  opencv4_override
 
   (python.withPackages (ps: with ps; [
     beautifulsoup4
@@ -200,7 +215,7 @@ with pkgs; [
     isort
     matplotlib
     numpy
-    opencv4
+    opencv4_python_override
     pandas
     pillow
     pip
