@@ -183,44 +183,9 @@ with pkgs; [
   rust-analyzer
   sumneko-lua-language-server
 
-  # TODO compile OpenCV with more flags
-  # https://discourse.nixos.org/t/how-to-set-up-opencv4-with-python-bindings-and-a-gui/11998/9
   cudnn
   eigen
-  opencv
   opencv4
-
-  # (pkgs.opencv.override (old: {
-  #   enableEigen = true;
-  #   enableFfmpeg = true;
-  #   enableGStreamer = true;
-  #   enableGtk2 = true;
-  #   enableJPEG = true;
-  #   enablePNG = true;
-  #   enablePython = true;
-  #   enableTIFF = true;
-  #   # enableJPEG2K = true;
-  # }))
-
-  # (pkgs.opencv4.override (old: {
-  #   enableContrib = true;
-  #   enableEigen = true;
-  #   enableJPEG = true;
-  #   enableOpenblas = true;
-  #   enablePNG = true;
-  #   enableTIFF = true;
-  #   enableWebP = true;
-  #   enableFfmpeg = true;
-  #   enableGPhoto2 = true;
-  #   enableGStreamer = true;
-  #   enableTbb = true;
-  #   # enableTesseract = true;
-  #   enableGtk2 = true;
-  #   enableGtk3 = true;
-  #   enableIpp = true;
-  #   enablePython = true;
-  #   enableUnfree = true;
-  # }))
 
   (python39.withPackages (ps: with ps; [
     beautifulsoup4
