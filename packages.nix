@@ -251,7 +251,7 @@ with pkgs; [
   qimgv_override
 
   ardour
-  # guitarix
+  guitarix
 
   mpv
   okular
