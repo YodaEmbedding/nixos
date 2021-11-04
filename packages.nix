@@ -195,6 +195,7 @@ with pkgs; [
   nodePackages.vscode-html-languageserver-bin
   nodePackages.vscode-json-languageserver
   nodePackages.yaml-language-server
+  rnix-lsp
   rust-analyzer
   sumneko-lua-language-server
 
@@ -203,13 +204,16 @@ with pkgs; [
   opencv4_override
 
   (python.withPackages (ps: with ps; [
+    # arxiv
     beautifulsoup4
     bitarray
     black
     dbus-python
     isort
     matplotlib
+    numba
     numpy
+    omegaconf
     opencv4_python_override
     pandas
     pillow
@@ -226,6 +230,7 @@ with pkgs; [
     seaborn
     tensorflow-tensorboard
     tensorflowWithCuda
+    # torchinfo
     torchvision
     virtualenv
   ]))
@@ -245,7 +250,7 @@ with pkgs; [
   photoqt
   qimgv_override
 
-  # ardour
+  ardour
   # guitarix
 
   mpv
@@ -277,6 +282,7 @@ with pkgs; [
   copyq
   dropbox
   firefox
+  font-manager
   google-chrome
   gvfs
   obs-studio

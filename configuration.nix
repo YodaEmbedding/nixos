@@ -129,6 +129,8 @@
   ];
 
   fonts.fonts = with pkgs; [
+    fira-code
+    fira-code-symbols
     font-awesome
     iosevka
     noto-fonts
