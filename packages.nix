@@ -22,6 +22,10 @@ let
     enableFfmpeg    = true;
   };
 
+  polybar_override = pkgs.polybar.override {
+    i3Support = true;
+  };
+
   qimgv_override = (qimgv.overrideAttrs (old: {
     buildInputs = old.buildInputs ++ [ cudatoolkit ];
   }));
@@ -80,7 +84,7 @@ with pkgs; [
   i3lock-color
   lxappearance
   picom
-  polybar
+  polybar_override
   qt5ct
   xfce.xfconf
   xorg.xcursorthemes
