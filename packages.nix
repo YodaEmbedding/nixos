@@ -72,15 +72,6 @@ with pkgs; [
   zoxide
   zsh
 
-  # unixtools.col
-  # unixtools.fdisk
-  # unixtools.fsck
-  # unixtools.ping
-  # unixtools.route
-  # unixtools.top
-  # unixtools.util-linux
-  # unixtools.watch
-
   adapta-gtk-theme
   breeze-gtk
   breeze-icons
@@ -166,9 +157,6 @@ with pkgs; [
   musl
   openblas
 
-  # tesseract
-  # leptonica
-
   autoconf
   cargo
   ccache
@@ -194,7 +182,6 @@ with pkgs; [
   lua5_1
   luajit
 
-  # clangd
   haskell-language-server
   nodePackages.bash-language-server
   nodePackages.diagnostic-languageserver
@@ -272,7 +259,6 @@ with pkgs; [
     ];
   })
 
-  # shared-mime-info
   xfce.tumbler
 
   discord
@@ -280,7 +266,6 @@ with pkgs; [
   zoom-us
 
   (pass.withExtensions (ext: with ext; [
-    # pass-import
     pass-otp
   ]))
 
