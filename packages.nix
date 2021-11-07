@@ -39,6 +39,7 @@ with pkgs; [
   ntfs3g
 
   man
+  moreutils
 
   # tools/archivers tools/compression
   dtrx
