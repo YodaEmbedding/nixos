@@ -5,8 +5,10 @@
 
 with pkgs;
 let
-  python = python39;
-  pythonPackages = python39Packages;
+  python = python3;
+  python3 = python39;
+  pythonPackages = python3Packages;
+  python3Packages = python39Packages;
 
   opencv4_override = opencv4.override {
     enableUnfree    = true;
