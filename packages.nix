@@ -32,10 +32,32 @@ let
     buildInputs = old.buildInputs ++ [ cudatoolkit ];
   }));
 
+  metadata-filter = with pythonPackages;
+    pkgs.callPackage ./pkgs/python/metadata-filter {
+      inherit lib buildPythonPackage fetchPypi;
+    };
+
+  mpris2 = with pythonPackages;
+    pkgs.callPackage ./pkgs/python/mpris2 {
+      inherit lib buildPythonPackage fetchPypi dbus-python;
+    };
+
 in
 with pkgs; [
 
   (pkgs.callPackage (import ./pkgs/frece) {})
+  (pkgs.callPackage (import ./pkgs/scrobblez) (with pythonPackages; {
+    inherit
+      lib
+      buildPythonApplication
+      fetchPypi
+      metadata-filter
+      mpris2
+      pylast
+      pyxdg
+      setuptools
+      ;
+  }))
   (pkgs.callPackage (import ./pkgs/zhumu) {})
 
   ntfs3g
@@ -231,11 +253,17 @@ with pkgs; [
     requests
     scipy
     seaborn
+    scikit-learn
     tensorflow-tensorboard
     tensorflowWithCuda
     # torchinfo
     torchvision
     virtualenv
+
+    metadata-filter
+    mpris2
+    pylast
+
   ]))
 
   exiftool
