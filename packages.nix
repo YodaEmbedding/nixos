@@ -42,21 +42,26 @@ let
       inherit lib buildPythonPackage fetchPypi dbus-python;
     };
 
+  scrobblez = with pythonPackages;
+    pkgs.callPackage ./pkgs/python/scrobblez {
+      inherit
+        lib
+        buildPythonPackage
+        fetchPypi
+        metadata-filter
+        mpris2
+        pylast
+        pyxdg
+        setuptools
+        ;
+      };
+
 in
 with pkgs; [
 
   (pkgs.callPackage (import ./pkgs/frece) {})
   (pkgs.callPackage (import ./pkgs/scrobblez) (with pythonPackages; {
-    inherit
-      lib
-      buildPythonApplication
-      fetchPypi
-      metadata-filter
-      mpris2
-      pylast
-      pyxdg
-      setuptools
-      ;
+    inherit lib toPythonApplication scrobblez;
   }))
   (pkgs.callPackage (import ./pkgs/zhumu) {})
 
