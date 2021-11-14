@@ -259,6 +259,7 @@ with pkgs; [
     scipy
     seaborn
     scikit-learn
+    snakeviz
     tensorflow-tensorboard
     tensorflowWithCuda
     # torchinfo
