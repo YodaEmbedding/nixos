@@ -13,7 +13,20 @@
   networking.hostName = "PC-Mordor-NixOS";
   time.timeZone = "America/Vancouver";
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
+    grub = {
+      enable = true;
+      version = 2;
+      devices = [ "nodev" ];
+      efiSupport = true;
+      useOSProber = true;
+    };
+    systemd-boot = {
+      enable = true;
+    };
+  };
 }
