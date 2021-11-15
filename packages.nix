@@ -65,6 +65,7 @@ with pkgs; [
   }))
   (pkgs.callPackage (import ./pkgs/zhumu) {})
 
+  efibootmgr
   ntfs3g
 
   man
