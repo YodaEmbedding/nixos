@@ -157,6 +157,7 @@
   };
 
   environment.systemPackages = (import ./packages.nix {
+    config = config;
     pkgs = pkgs;
   });
 

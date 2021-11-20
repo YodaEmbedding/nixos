@@ -1,10 +1,15 @@
 {
+  config,
   pkgs,
   ...
 }:
 
 with pkgs;
 let
+  unstable = import <nixos-unstable> {
+    config = config.nixpkgs.config;
+  };
+
   python = python3;
   python3 = python39;
   pythonPackages = python3Packages;
@@ -120,7 +125,7 @@ with pkgs; [
   xfce.xfconf
   xorg.xcursorthemes
 
-  alsa-utils
+  alsaUtils
   cadence
   ddccontrol
   jack2
@@ -151,7 +156,7 @@ with pkgs; [
   git
   jq
   jre8
-  neovim
+  unstable.neovim
   rustup
   stack
   stow
@@ -242,7 +247,7 @@ with pkgs; [
     dbus-python
     isort
     matplotlib
-    numba
+    unstable.python39Packages.numba
     numpy
     omegaconf
     opencv4_python_override
