@@ -376,7 +376,7 @@ with pkgs; [
 
   # games
   anki
-  # lutris
+  lutris
   steam
 
 ]
