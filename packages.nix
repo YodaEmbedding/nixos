@@ -64,186 +64,99 @@ let
 in
 with pkgs; [
 
+  # custom packages
   (pkgs.callPackage (import ./pkgs/frece) {})
   (pkgs.callPackage (import ./pkgs/scrobblez) (with pythonPackages; {
     inherit lib toPythonApplication scrobblez;
   }))
   (pkgs.callPackage (import ./pkgs/zhumu) {})
 
-  efibootmgr
-  ntfs3g
+  # shells
+  bash
+  zinit
+  zsh
 
-  man
-  moreutils
-
-  nix-query-tree-viewer
-  nix-tree
-
-  # tools/archivers tools/compression
+  # tools/archivers + tools/compression
   dtrx
   p7zip
   unzip
   zip
 
+  # tools/filesystems
+  ntfs3g
+
+  # tools/graphics
+  vulkan-tools
+  zbar
+
+  # tools/networking
+  fping
+  openfortivpn
+  ssh-copy-id
+  sshpass
+  wget
+
+  # tools/nix
+  nix-query-tree-viewer
+  nix-tree
+
+  # tools/security
+  gnupg
+  pinentry
+
+  (pass.withExtensions (ext: with ext; [
+    pass-otp
+  ]))
+
+  # tools/system
   at
-  bash
-  bat
   cron
-  delta
+  efibootmgr
+  htop
+
+  # tools/misc + tools/*
+  bat
   fasd
   fd
   file
-  fping
   fselect
   fzf
-  gnupg
   gparted
-  htop
   lf
+  man
+  moreutils
   neofetch
   parted
   perl532Packages.vidir
-  pinentry
-  ranger
   ripgrep
   sd
-  ssh-copy-id
-  sshpass
+  stow
+  tmux
   todo-txt-cli
-  wget
-  zinit
-  zoxide
-  zsh
-
-  adapta-gtk-theme
-  breeze-gtk
-  breeze-icons
-  dunst
-  i3
-  i3lock-color
-  lxappearance
-  picom
-  polybar_override
-  qt5ct
-  xfce.xfconf
-  xorg.xcursorthemes
-
-  alsaUtils
-  cadence
-  ddccontrol
-  jack2
-  libinput
-  libnotify
-  pamixer
-  pasystray
-  pavucontrol
-  pulseaudio
-  wally-cli
-
-  # (wineWowPackages.full.override {
-  #   wineRelease = "staging";
-  #   mingwSupport = true;
-  # })
-  # (winetricks.override {
-  #   wine = wineWowPackages.staging;
-  # })
-
-  # lutris
-  # steam
-
+  trash-cli
   xclip
   xdotool
+  youtube-dl
+  zoxide
 
-  alacritty
-  binutils
-  git
-  jq
-  jre8
-  unstable.neovim
-  rustup
-  stack
-  stow
-  termite
-  tmux
-  tree-sitter
-  vim
-  vscode
-
-  boost
-  cudatoolkit
-  ffmpeg
-  gst_all_1.gst-plugins-bad
-  gst_all_1.gst-plugins-base
-  gst_all_1.gst-plugins-good
-  gst_all_1.gst-plugins-ugly
-  libGL
-  libGLU
-  libcxx
-  libcxxabi
-  libgphoto2
-  libllvm
-  nvidia-optical-flow-sdk
-  tbb
-  vulkan-headers
-  vulkan-tools
-
-  glib
-  glibc
-  gtk2
-  gtk3
-  jasper
-  libcxx
-  libjpeg
-  libpng
-  libtiff
-  libwebp
-  musl
-  openblas
-
-  autoconf
+  # development/compilers + development/interpreters
   cargo
-  ccache
   clang
-  clang-tools
-  cmake
+  cudatoolkit
   gcc
   ghc
-  gnumake
   go
   jdk
+  jre8
   llvm
-  nim
-  ninja
-  nodejs
-  rustc
-  sqlite
-  texlive.combined.scheme-full
-  yarn
-
   lua
-  lua51Packages.luarocks
   lua5_1
   luajit
-
-  haskell-language-server
-  nodePackages.bash-language-server
-  nodePackages.diagnostic-languageserver
-  nodePackages.pyright
-  nodePackages.typescript-language-server
-  nodePackages.vim-language-server
-  nodePackages.vscode-html-languageserver-bin
-  nodePackages.vscode-json-languageserver
-  nodePackages.yaml-language-server
-  rnix-lsp
-  rust-analyzer
-  sumneko-lua-language-server
-
-  cudnn
-  eigen
-  opencv4_override
+  nim
+  rustc
+  texlive.combined.scheme-full
 
   (python.withPackages (ps: with ps; [
-    # arxiv
     beautifulsoup4
     bitarray
     black
@@ -271,40 +184,176 @@ with pkgs; [
     snakeviz
     tensorflow-tensorboard
     tensorflowWithCuda
-    # torchinfo
     torchvision
     virtualenv
 
+    # custom
+    # arxiv
     metadata-filter
     mpris2
     pylast
-
+    # torchinfo
   ]))
 
-  exiftool
-  imagemagick
-  maim
-  scrot
+  # development/libraries
+  boost
+  cudnn
+  eigen
+  ffmpeg
+  glib
+  glibc
+  gtk2
+  gtk3
+  gvfs
+  jasper
+  libGL
+  libGLU
+  libcxx
+  libcxxabi
+  libgphoto2
+  libinput
+  libjpeg
+  libllvm
+  libnotify
+  libpng
+  libtiff
+  libwebp
+  musl
+  nvidia-optical-flow-sdk
+  openblas
+  opencv4_override
+  tbb
+  vulkan-headers
 
+  # development/tools
+  autoconf
+  binutils
+  ccache
+  clang-tools
+  cmake
+  gnumake
+  jq
+  lua51Packages.luarocks
+  ninja
+  rustup
+  tree-sitter
+  yarn
+
+  # language servers
+  haskell-language-server
+  nodePackages.bash-language-server
+  nodePackages.diagnostic-languageserver
+  nodePackages.pyright
+  nodePackages.typescript-language-server
+  nodePackages.vim-language-server
+  nodePackages.vscode-html-languageserver-bin
+  nodePackages.vscode-json-languageserver
+  nodePackages.yaml-language-server
+  rnix-lsp
+  rust-analyzer
+  sumneko-lua-language-server
+
+  # development/*
+  nodejs
+  sqlite
+  stack
+
+  # hardware
+  ddccontrol
+  wally-cli
+
+  # audio
+  alsaUtils
+  cadence
+  gst_all_1.gst-plugins-bad
+  gst_all_1.gst-plugins-base
+  gst_all_1.gst-plugins-good
+  gst_all_1.gst-plugins-ugly
+  jack2
+  pamixer
+  pasystray
+  pavucontrol
+  playerctl
+  pulseaudio
+
+  # applications/audio (user)
+  ardour
+  # guitarix
+  spotify
+
+  # applications/editors
+  unstable.neovim
+  vim
+  vscode
+
+  # applications/graphics
   darktable
   feh
   geeqie
   gimp
   gimpPlugins.resynthesizer
   gthumb
+  imagemagick
   krita
   photoqt
   qimgv_override
 
-  ardour
-  # guitarix
+  # tools/graphics
+  exiftool
+  maim
+  scrot
 
+  # applications/networking
+  dropbox
+  firefox
+  google-chrome
+  qbittorrent
+
+  # applications/networking/instant-messengers
+  discord
+  skypeforlinux
+  zoom-us
+
+  # applications/terminal-emulators
+  alacritty
+  termite
+
+  # applications/version-management
+  delta
+  git
+
+  # applications/video
   mpv
-  okular
-  spotify
+  obs-studio
   vlc
-  youtube-dl
+
+  # applications/misc
+  copyq
+  dunst
+  font-manager
+  okular
+  ranger
+  redshift
+  rofi
   zathura
+
+  # applications/window-managers
+  i3
+  picom
+
+  # themes
+  adapta-gtk-theme
+  breeze-gtk
+  breeze-icons
+  xorg.xcursorthemes
+
+  # desktop utilities
+  i3lock-color
+  lxappearance
+  polybar_override
+  qt5ct
+  xfce.tumbler
+  xfce.xfconf
 
   (xfce.thunar.override {
     thunarPlugins = [
@@ -314,31 +363,20 @@ with pkgs; [
     ];
   })
 
-  xfce.tumbler
+  # wine
 
-  discord
-  skypeforlinux
-  zoom-us
+  # (wineWowPackages.full.override {
+  #   wineRelease = "staging";
+  #   mingwSupport = true;
+  # })
 
-  (pass.withExtensions (ext: with ext; [
-    pass-otp
-  ]))
+  # (winetricks.override {
+  #   wine = wineWowPackages.staging;
+  # })
 
+  # games
   anki
-  copyq
-  dropbox
-  firefox
-  font-manager
-  google-chrome
-  gvfs
-  obs-studio
-  openfortivpn
-  playerctl
-  qbittorrent
-  redshift
-  rofi
+  # lutris
   steam
-  trash-cli
-  zbar
 
 ]
