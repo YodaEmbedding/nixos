@@ -249,7 +249,7 @@ with pkgs; [
     pandas
     pillow
     pip
-    poetry
+    # poetry
     ptpython
     pygobject3
     pynvim
