@@ -347,6 +347,7 @@ with pkgs; [
   xorg.xcursorthemes
 
   # desktop utilities
+  dolphin
   i3lock-color
   lxappearance
   polybar_override
