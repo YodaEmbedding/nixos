@@ -87,7 +87,6 @@ with pkgs; [
 
   # tools/graphics
   vulkan-tools
-  zbar
 
   # tools/networking
   fping
