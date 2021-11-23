@@ -76,6 +76,9 @@ with pkgs; [
   man
   moreutils
 
+  nix-query-tree-viewer
+  nix-tree
+
   # tools/archivers tools/compression
   dtrx
   p7zip
