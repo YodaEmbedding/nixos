@@ -354,6 +354,7 @@ with pkgs; [
   qt5ct
   xfce.tumbler
   xfce.xfconf
+  xorg.xdpyinfo
 
   (xfce.thunar.override {
     thunarPlugins = [
