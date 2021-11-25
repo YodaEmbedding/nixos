@@ -29,7 +29,7 @@ let
     enableFfmpeg    = true;
   };
 
-  polybar_override = pkgs.polybar.override {
+  polybar_override = unstable.polybar.override {
     i3Support = true;
   };
 
