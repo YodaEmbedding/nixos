@@ -11,6 +11,7 @@
     ./fonts.nix
     ./networking.nix
     ./nixpkgs_conf.nix
+    ./sound.nix
     ./xdg
   ];
 
@@ -33,23 +34,7 @@
     libinput.enable = true;
   };
 
-  # sound.enable = true;
-
-  # hardware.pulseaudio = {
-  #   enable = true;
-  #   support32Bit = true;
-  # };
-
   security.rtkit.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    jack.enable = true;
-    pulse.enable = true;
-    socketActivation = true;
-  };
 
   hardware.opengl = {
     enable = true;
