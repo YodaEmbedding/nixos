@@ -14,6 +14,14 @@
     ./xdg
   ];
 
+  services = {
+    earlyoom.enable = true;
+    gvfs.enable = true;
+    localtime.enable = true;
+    # openssh.enable = true;
+    # printing.enable = true;
+  };
+
   services.xserver = {
     enable = true;
     layout = "us";
@@ -24,13 +32,6 @@
 
     libinput.enable = true;
   };
-
-  services.localtime.enable = true;
-
-  services.earlyoom.enable = true;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
   # sound.enable = true;
 
@@ -78,13 +79,6 @@
   security.pam.services.lightdm.enableGnomeKeyring = true;
   # ssh.startAgent = true;
 
-  services.gvfs.enable = true;
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
   virtualisation.virtualbox.host = {
     enable = true;
     enableExtensionPack = true;
@@ -93,9 +87,6 @@
   users.extraGroups.vboxusers.members = [
     "mulhaq"
   ];
-
-  # TODO does this do anything
-  # systemd.services.dunst.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
