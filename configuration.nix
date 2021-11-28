@@ -36,39 +36,6 @@
     libinput.enable = true;
   };
 
-  security.rtkit.enable = true;
-
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-    # extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
-    # setLdLibraryPath = true;
-  };
-
-  security.sudo.configFile = ''
-    Defaults pwfeedback
-    Defaults timestamp_timeout=120
-  '';
-
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.lightdm.enableGnomeKeyring = true;
-  # ssh.startAgent = true;
-
-  virtualisation.virtualbox.host = {
-    enable = true;
-    enableExtensionPack = true;
-  };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-  programs.zsh.enable = true;
-
   environment.variables = rec {
     BROWSER = "firefox";
     EDITOR = "nvim";
@@ -83,7 +50,41 @@
     pkgs = pkgs;
   });
 
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+    # extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+    # setLdLibraryPath = true;
+  };
+
   nix.autoOptimiseStore = true;
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+  programs.zsh.enable = true;
+
+  security.sudo.configFile = ''
+    Defaults pwfeedback
+    Defaults timestamp_timeout=120
+  '';
+
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.lightdm.enableGnomeKeyring = true;
+
+  security.rtkit.enable = true;
+
+  # ssh.startAgent = true;
+
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableExtensionPack = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
