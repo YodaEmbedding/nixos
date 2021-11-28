@@ -17,6 +17,7 @@
 
   services = {
     earlyoom.enable = true;
+    fstrim.enable = true;
     gvfs.enable = true;
     localtime.enable = true;
     # openssh.enable = true;
