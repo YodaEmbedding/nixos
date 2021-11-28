@@ -12,6 +12,7 @@
     ./networking.nix
     ./nixpkgs_conf.nix
     ./sound.nix
+    ./users.nix
     ./xdg
   ];
 
@@ -45,17 +46,6 @@
     # setLdLibraryPath = true;
   };
 
-  # users.defaultUserShell = pkgs.zsh;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.mulhaq = {
-    isNormalUser = true;
-    uid = 1000;
-    extraGroups = [ "wheel" "plugdev" ];
-    createHome = true;
-    shell = pkgs.zsh;
-  };
-
   security.sudo.configFile = ''
     Defaults pwfeedback
     Defaults timestamp_timeout=120
@@ -69,10 +59,6 @@
     enable = true;
     enableExtensionPack = true;
   };
-
-  users.extraGroups.vboxusers.members = [
-    "mulhaq"
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
