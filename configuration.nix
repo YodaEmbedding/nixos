@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ./hosts/pc_mordor
+    ./fonts.nix
     ./nixpkgs_conf.nix
     ./xdg
   ];
@@ -21,24 +22,6 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.enp2s0.useDHCP = true;
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
-
-  # fonts = {
-  #   fontDir.enable = true;
-  #   fonts = with pkgs; [
-  #     ubuntu_font_family
-  #   ];
-  #   fontconfig.defaultFonts = {
-  #     sansSerif = [ "Ubuntu" ];
-  #     monospace = [ "Ubuntu Mono" ];
-  #   };
-  # };
 
   services.xserver = {
     enable = true;
@@ -122,17 +105,6 @@
 
   users.extraGroups.vboxusers.members = [
     "mulhaq"
-  ];
-
-  fonts.fonts = with pkgs; [
-    fira-code
-    fira-code-symbols
-    font-awesome
-    iosevka
-    noto-fonts
-    noto-fonts-cjk
-    roboto
-    roboto-mono
   ];
 
   # TODO does this do anything
