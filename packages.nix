@@ -14,6 +14,8 @@ let
   python3 = python39;
   pythonPackages = python3Packages;
   python3Packages = python39Packages;
+  pythonPackagesUnstable = python3PackagesUnstable;
+  python3PackagesUnstable = unstable.python39Packages;
 
   opencv4_override = opencv4.override {
     enableUnfree    = true;
@@ -162,7 +164,7 @@ with pkgs; [
     dbus-python
     isort
     matplotlib
-    unstable.python39Packages.numba
+    pythonPackagesUnstable.numba
     numpy
     omegaconf
     opencv4_python_override
