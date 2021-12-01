@@ -173,6 +173,7 @@ with pkgs; [
     ptpython
     pygobject3
     pynvim
+    pyinotify
     pytest
     pytorch
     pytorch-lightning
