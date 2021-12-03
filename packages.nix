@@ -11,9 +11,9 @@ let
   };
 
   python = python3;
-  python3 = unstable.python39;
+  python3 = python39;
   pythonPackages = python3Packages;
-  python3Packages = unstable.python39Packages;
+  python3Packages = python39Packages;
 
   opencv4_override = opencv4.override {
     enableUnfree    = true;
