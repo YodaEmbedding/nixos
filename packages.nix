@@ -175,16 +175,16 @@ with pkgs; [
     pynvim
     pyinotify
     pytest
-    pytorch
-    pytorch-lightning
+    # pytorch
+    # pytorch-lightning
     requests
     scipy
     seaborn
     scikit-learn
     snakeviz
     tensorflow-tensorboard
-    tensorflowWithCuda
-    torchvision
+    # tensorflowWithCuda
+    # torchvision
     virtualenv
 
     # custom
@@ -204,7 +204,7 @@ with pkgs; [
   glibc
   gtk2
   gtk3
-  gvfs
+  # gvfs
   jasper
   libGL
   libGLU
@@ -265,10 +265,10 @@ with pkgs; [
   # audio
   alsaUtils
   cadence
-  gst_all_1.gst-plugins-bad
-  gst_all_1.gst-plugins-base
-  gst_all_1.gst-plugins-good
-  gst_all_1.gst-plugins-ugly
+  # gst_all_1.gst-plugins-bad
+  # gst_all_1.gst-plugins-base
+  # gst_all_1.gst-plugins-good
+  # gst_all_1.gst-plugins-ugly
   jack2
   pamixer
   pasystray
@@ -287,16 +287,16 @@ with pkgs; [
   vscode
 
   # applications/graphics
-  darktable
-  feh
-  geeqie
-  gimp
-  gimpPlugins.resynthesizer
-  gthumb
-  imagemagick
-  krita
-  photoqt
-  qimgv_override
+  # darktable
+  # feh
+  # geeqie
+  # gimp
+  # gimpPlugins.resynthesizer
+  # gthumb
+  # imagemagick
+  # krita
+  # photoqt
+  # qimgv_override
 
   # tools/graphics
   exiftool
@@ -330,7 +330,7 @@ with pkgs; [
   # applications/misc
   copyq
   dunst
-  font-manager
+  # font-manager
   okular
   ranger
   redshift
@@ -342,7 +342,7 @@ with pkgs; [
   picom
 
   # themes
-  adapta-gtk-theme
+  # adapta-gtk-theme
   breeze-gtk
   breeze-icons
   xorg.xcursorthemes
@@ -378,7 +378,7 @@ with pkgs; [
 
   # games
   anki
-  lutris
+  # lutris
   steam
 
 ]
