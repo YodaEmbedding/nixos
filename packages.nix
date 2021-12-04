@@ -33,10 +33,6 @@ let
     i3Support = true;
   };
 
-  qimgv_override = (qimgv.overrideAttrs (old: {
-    buildInputs = old.buildInputs ++ [ cudatoolkit ];
-  }));
-
   metadata-filter = with pythonPackages;
     pkgs.callPackage ./pkgs/python/metadata-filter {
       inherit lib buildPythonPackage fetchPypi;
@@ -296,7 +292,7 @@ with pkgs; [
   imagemagick
   krita
   photoqt
-  qimgv_override
+  qimgv
 
   # tools/graphics
   exiftool
