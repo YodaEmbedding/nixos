@@ -179,7 +179,7 @@ with pkgs; [
     scikit-learn
     snakeviz
     tensorflow-tensorboard
-    # tensorflowWithCuda
+    tensorflowWithCuda
     torchvision
     virtualenv
 
