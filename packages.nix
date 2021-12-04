@@ -43,7 +43,11 @@ let
       inherit lib buildPythonPackage fetchPypi dbus-python;
     };
 
-  scrobblez = with pythonPackages;
+  # CUSTOM PACKAGES:
+
+  frece = (pkgs.callPackage (import ./pkgs/frece) {});
+
+  scrobblez_python = with pythonPackages;
     pkgs.callPackage ./pkgs/python/scrobblez {
       inherit
         lib
@@ -57,15 +61,21 @@ let
         ;
       };
 
+  scrobblez = (pkgs.callPackage (import ./pkgs/scrobblez) (
+    with pythonPackages; {
+      inherit lib toPythonApplication;
+      scrobblez = scrobblez_python;
+    }));
+
+  zhumu = (pkgs.callPackage (import ./pkgs/zhumu) {});
+
 in
 with pkgs; [
 
   # custom packages
-  (pkgs.callPackage (import ./pkgs/frece) {})
-  (pkgs.callPackage (import ./pkgs/scrobblez) (with pythonPackages; {
-    inherit lib toPythonApplication scrobblez;
-  }))
-  (pkgs.callPackage (import ./pkgs/zhumu) {})
+  frece
+  scrobblez
+  zhumu
 
   # shells
   bash
