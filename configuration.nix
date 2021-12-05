@@ -46,8 +46,7 @@
   };
 
   environment.systemPackages = (import ./packages.nix {
-    config = config;
-    pkgs = pkgs;
+    inherit config pkgs;
   });
 
   hardware.opengl = {
