@@ -132,7 +132,7 @@ with pkgs; [
   moreutils
   neofetch
   parted
-  perl532Packages.vidir
+  perlPackages.vidir
   ripgrep
   sd
   stow
