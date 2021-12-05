@@ -1,12 +1,16 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }:
 
 with pkgs;
 let
-  unstable = pkgs;
+  unstable = import inputs.nixpkgs-unstable {
+    inherit system;
+    config = config.nixpkgs.config;
+  };
 
   python = python3;
   python3 = python39;

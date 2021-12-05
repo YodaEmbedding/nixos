@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -46,7 +47,7 @@
   };
 
   environment.systemPackages = (import ./packages.nix {
-    inherit config pkgs;
+    inherit config pkgs inputs;
   });
 
   hardware.opengl = {
