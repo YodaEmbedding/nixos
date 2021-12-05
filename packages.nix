@@ -6,9 +6,7 @@
 
 with pkgs;
 let
-  unstable = import <nixos-unstable> {
-    config = config.nixpkgs.config;
-  };
+  unstable = pkgs;
 
   python = python3;
   python3 = python39;
