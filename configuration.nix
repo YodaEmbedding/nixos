@@ -57,7 +57,13 @@
     # setLdLibraryPath = true;
   };
 
-  nix.autoOptimiseStore = true;
+  nix = {
+    autoOptimiseStore = true;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+    package = pkgs.nixFlakes;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
