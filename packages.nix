@@ -282,6 +282,7 @@ with pkgs; [
   # applications/graphics
   darktable
   feh
+  gcolor2
   geeqie
   gimp
   gimpPlugins.resynthesizer
