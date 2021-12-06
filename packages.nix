@@ -202,6 +202,7 @@ with pkgs; [
     metadata-filter
     mpris2
     pylast
+    scrobblez_python
     # torchinfo
   ]))
 
