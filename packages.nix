@@ -341,10 +341,31 @@ with pkgs; [
 
   # themes
   adapta-gtk-theme
+  adapta-kde-theme
+  amarena-theme
+  arc-theme
   breeze-gtk
+  dracula-theme
+  equilux-theme
+  juno-theme
+  materia-kde-theme
+  materia-theme
+  oceanic-theme
+  orchis-theme
+  palenight-theme
+  plata-theme
+  pop-gtk-theme
+  qogir-theme
+  spacx-gtk-theme
+  yaru-theme
 
   # icons
+  arc-icon-theme
   breeze-icons
+  maia-icon-theme
+  paper-icon-theme
+  pop-icon-theme
+  tela-icon-theme
 
   # cursors
   xorg.xcursorthemes
