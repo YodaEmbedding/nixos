@@ -9,6 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     ./hosts/pc_mordor
+    ./compositor.nix
     ./fonts.nix
     ./networking.nix
     ./nixpkgs_conf.nix
@@ -24,7 +25,7 @@
     gvfs.enable = true;
     localtime.enable = true;
     # openssh.enable = true;
-    # picom.enable = true;
+    picom.enable = true;
     # printing.enable = true;
   };
 
