@@ -20,9 +20,11 @@
   services = {
     earlyoom.enable = true;
     fstrim.enable = true;
+    gnome.gnome-keyring.enable = true;
     gvfs.enable = true;
     localtime.enable = true;
     # openssh.enable = true;
+    # picom.enable = true;
     # printing.enable = true;
   };
 
@@ -54,8 +56,6 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    # extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
-    # setLdLibraryPath = true;
   };
 
   nix = {
@@ -66,26 +66,23 @@
     package = pkgs.nixFlakes;
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  # SUID wrappers, configurations, or start in user sessions.
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    zsh.enable = true;
   };
-  programs.zsh.enable = true;
 
-  security.sudo.configFile = ''
-    Defaults pwfeedback
-    Defaults timestamp_timeout=120
-  '';
-
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.lightdm.enableGnomeKeyring = true;
-
-  security.rtkit.enable = true;
-
-  # ssh.startAgent = true;
+  security = {
+    pam.services.lightdm.enableGnomeKeyring = true;
+    rtkit.enable = true;
+    sudo.configFile = ''
+      Defaults pwfeedback
+      Defaults timestamp_timeout=120
+    '';
+  };
 
   virtualisation.virtualbox.host = {
     enable = true;
