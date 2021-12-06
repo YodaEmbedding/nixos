@@ -326,6 +326,7 @@ with pkgs; [
   dunst
   font-manager
   foxitreader
+  masterpdfeditor
   okular
   ranger
   redshift
