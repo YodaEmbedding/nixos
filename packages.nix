@@ -39,39 +39,20 @@ let
 
   # CUSTOM PACKAGES:
 
-  metadata-filter = with pythonPackages;
-    pkgs.callPackage ./pkgs/python/metadata-filter {
-      inherit lib buildPythonPackage fetchPypi;
-    };
+  pkgs_custom = (import ./pkgs) { inherit config pkgs pythonPackages; };
 
-  mpris2 = with pythonPackages;
-    pkgs.callPackage ./pkgs/python/mpris2 {
-      inherit lib buildPythonPackage fetchPypi dbus-python;
-    };
+  inherit (pkgs_custom)
+    frece
+    scrobblez
+    zhumu
+    ;
 
-  frece = (pkgs.callPackage (import ./pkgs/frece) {});
+  inherit (pkgs_custom.pythonPackages)
+    metadata-filter
+    mpris2
+    ;
 
-  scrobblez_python = with pythonPackages;
-    pkgs.callPackage ./pkgs/python/scrobblez {
-      inherit
-        lib
-        buildPythonPackage
-        fetchPypi
-        metadata-filter
-        mpris2
-        pylast
-        pyxdg
-        setuptools
-        ;
-      };
-
-  scrobblez = (pkgs.callPackage (import ./pkgs/scrobblez) (
-    with pythonPackages; {
-      inherit lib toPythonApplication;
-      scrobblez = scrobblez_python;
-    }));
-
-  zhumu = (pkgs.callPackage (import ./pkgs/zhumu) {});
+  scrobblez_python = pkgs_custom.pythonPackages.scrobblez;
 
 in
 with pkgs; [
