@@ -78,6 +78,7 @@ with pkgs; [
 
   # tools/graphics
   vulkan-tools
+  waifu2x-converter-cpp
 
   # tools/networking
   fping
@@ -323,11 +324,15 @@ with pkgs; [
   copyq
   dunst
   font-manager
+  foxitreader
   okular
   ranger
   redshift
   rofi
   zathura
+
+  # applications/*
+  libreoffice-fresh
 
   # applications/window-managers
   i3
