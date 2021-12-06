@@ -342,7 +342,11 @@ with pkgs; [
   # themes
   adapta-gtk-theme
   breeze-gtk
+
+  # icons
   breeze-icons
+
+  # cursors
   xorg.xcursorthemes
 
   # desktop utilities
