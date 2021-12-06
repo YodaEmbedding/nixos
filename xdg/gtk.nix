@@ -8,7 +8,7 @@
   environment.etc."xdg/gtk-3.0/settings.ini".text = ''
     [Settings]
     gtk-font-name=Noto Sans Regular 10
-    gtk-theme-name=Adapta-Nokto-Eta
+    gtk-theme-name=palenight
     gtk-icon-theme-name=breeze-dark
     gtk-cursor-theme-name=Breeze_Snow
     gtk-cursor-theme-size=0
