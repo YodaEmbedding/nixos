@@ -17,6 +17,8 @@ let
   pythonPackages = python3Packages;
   python3Packages = python39Packages;
 
+  # OVERRIDES:
+
   opencv4_override = opencv4.override {
     enableUnfree    = true;
     enableGtk3      = true;
@@ -35,6 +37,8 @@ let
     i3Support = true;
   };
 
+  # CUSTOM PACKAGES:
+
   metadata-filter = with pythonPackages;
     pkgs.callPackage ./pkgs/python/metadata-filter {
       inherit lib buildPythonPackage fetchPypi;
@@ -44,8 +48,6 @@ let
     pkgs.callPackage ./pkgs/python/mpris2 {
       inherit lib buildPythonPackage fetchPypi dbus-python;
     };
-
-  # CUSTOM PACKAGES:
 
   frece = (pkgs.callPackage (import ./pkgs/frece) {});
 
