@@ -16,6 +16,7 @@
     shadowExclude = [
       "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"   # Hidden i3 tabs
       "! name~=''"                                     # Unknown windows
+      "name = 'cpt_frame_window'"                      # Zoom screen sharing
       # "n:e:Notification"
       # "name = 'Notification'"
       # "name = 'Plank'"
@@ -27,7 +28,6 @@
       # "name *= 'picom'"
       # "name *= 'Chromium'"
       # "name *= 'Chrome'"
-      # "name = 'cpt_frame_window'"
       # "class_g ?= 'Notify-osd'"
     ];
 
