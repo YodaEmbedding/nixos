@@ -166,6 +166,7 @@ with pkgs; [
     pygobject3
     pynvim
     pyinotify
+    pylast
     pytest
     pytorch
     pytorch-lightning
@@ -183,7 +184,6 @@ with pkgs; [
     # arxiv
     metadata-filter
     mpris2
-    pylast
     scrobblez_python
     # torchinfo
   ]))
