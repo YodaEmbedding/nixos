@@ -50,6 +50,7 @@ let
   inherit (pkgs_custom.pythonPackages)
     metadata-filter
     mpris2
+    pytorch-msssim
     ;
 
   scrobblez_python = pkgs_custom.pythonPackages.scrobblez;
@@ -184,6 +185,7 @@ with pkgs; [
     # arxiv
     metadata-filter
     mpris2
+    pytorch-msssim
     scrobblez_python
     # torchinfo
   ]))

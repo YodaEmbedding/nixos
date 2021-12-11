@@ -17,6 +17,16 @@ rec {
       inherit lib buildPythonPackage fetchPypi dbus-python;
     };
 
+  pytorch-msssim = with pythonPackages;
+    pkgs.callPackage ./pytorch-msssim {
+      inherit
+        lib
+        buildPythonPackage
+        fetchPypi
+        pytorch
+        ;
+    };
+
   scrobblez = with pythonPackages;
     pkgs.callPackage ./scrobblez {
       inherit
