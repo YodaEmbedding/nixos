@@ -239,8 +239,7 @@ with pkgs; [
   nodePackages.pyright
   nodePackages.typescript-language-server
   nodePackages.vim-language-server
-  nodePackages.vscode-html-languageserver-bin
-  nodePackages.vscode-json-languageserver
+  nodePackages.vscode-langservers-extracted
   nodePackages.yaml-language-server
   rnix-lsp
   rust-analyzer
