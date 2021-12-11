@@ -388,6 +388,15 @@ with pkgs; [
     ];
   })
 
+  # misc/tmux-plugins
+  tmuxPlugins.better-mouse-mode
+  tmuxPlugins.continuum
+  tmuxPlugins.copycat
+  tmuxPlugins.extrakto
+  tmuxPlugins.fingers
+  tmuxPlugins.resurrect
+  tmuxPlugins.tmux-fzf
+
   # wine
 
   # (wineWowPackages.full.override {
