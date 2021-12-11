@@ -7,6 +7,24 @@
 
 with pkgs;
 rec {
+  compressai = with pythonPackages;
+    pkgs.callPackage ./compressai {
+      inherit
+        lib
+        buildPythonPackage
+        fetchPypi
+        matplotlib
+        numpy
+        pillow
+        pybind11
+        pytest
+        pytorch
+        pytorch-msssim
+        scipy
+        torchvision
+        ;
+    };
+
   metadata-filter = with pythonPackages;
     pkgs.callPackage ./metadata-filter {
       inherit lib buildPythonPackage fetchPypi;

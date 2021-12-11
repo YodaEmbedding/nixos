@@ -48,6 +48,7 @@ let
     ;
 
   inherit (pkgs_custom.pythonPackages)
+    compressai
     metadata-filter
     mpris2
     pytorch-msssim
@@ -183,6 +184,7 @@ with pkgs; [
 
     # custom
     # arxiv
+    compressai
     metadata-filter
     mpris2
     pytorch-msssim
