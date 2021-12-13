@@ -276,6 +276,7 @@ with pkgs; [
   ardour
   # guitarix
   spotify
+  spotify-tui
 
   # applications/editors
   unstable.neovim
