@@ -7,6 +7,23 @@
 
 with pkgs;
 rec {
+  catalyst = with pythonPackages;
+    pkgs.callPackage ./catalyst {
+      inherit
+        lib
+        buildPythonPackage
+        fetchFromGitHub
+        fetchPypi
+        hydra-slayer
+        numpy
+        pytest
+        pytorch
+        pyyaml
+        tensorboardx
+        tqdm
+        ;
+    };
+
   compressai = with pythonPackages;
     pkgs.callPackage ./compressai {
       inherit
@@ -23,6 +40,11 @@ rec {
         scipy
         torchvision
         ;
+    };
+
+  hydra-slayer = with pythonPackages;
+    pkgs.callPackage ./hydra-slayer {
+      inherit lib buildPythonPackage fetchPypi pytest;
     };
 
   metadata-filter = with pythonPackages;

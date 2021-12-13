@@ -48,6 +48,7 @@ let
     ;
 
   inherit (pkgs_custom.pythonPackages)
+    catalyst
     compressai
     metadata-filter
     mpris2
@@ -184,6 +185,7 @@ with pkgs; [
 
     # custom
     # arxiv
+    catalyst
     compressai
     metadata-filter
     mpris2
@@ -276,6 +278,7 @@ with pkgs; [
   ardour
   # guitarix
   spotify
+  spotifyd
   spotify-tui
 
   # applications/editors
