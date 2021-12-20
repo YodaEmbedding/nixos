@@ -129,6 +129,7 @@ with pkgs; [
   tmux
   todo-txt-cli
   trash-cli
+  wmctrl
   xclip
   xdotool
   youtube-dl
