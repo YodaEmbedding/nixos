@@ -122,6 +122,7 @@ with pkgs; [
   neofetch
   parted
   perlPackages.vidir
+  pplatex
   ripgrep
   sd
   stow
