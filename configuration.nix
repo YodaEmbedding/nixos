@@ -19,6 +19,7 @@
   ];
 
   services = {
+    ddccontrol.enable = true;
     earlyoom.enable = true;
     fstrim.enable = true;
     gnome.gnome-keyring.enable = true;
