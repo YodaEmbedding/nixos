@@ -182,6 +182,7 @@ with pkgs; [
     snakeviz
     tensorflow-tensorboard
     tensorflowWithCuda
+    tomlkit
     torchvision
     virtualenv
 
