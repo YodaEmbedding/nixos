@@ -243,6 +243,9 @@ in
   tree-sitter
   yarn
 
+  # build-support
+  pkg-config
+
   # language servers
   haskell-language-server
   nodePackages.bash-language-server
