@@ -39,6 +39,12 @@ let
     i3Support = true;
   };
 
+  spotifyd = unstable.spotifyd.override {
+    withPulseAudio  = true;
+    withMpris       = true;
+    withKeyring     = true;
+  };
+
   # CUSTOM PACKAGES:
 
   pkgs_custom = (import ./pkgs) { inherit config pkgs pythonPackages; };
