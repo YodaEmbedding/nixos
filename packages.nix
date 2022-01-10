@@ -19,7 +19,9 @@ let
 
   # OVERRIDES:
 
-  opencv4_override = opencv4.override {
+  neovim = unstable.neovim;
+
+  opencv4 = pkgs.opencv4.override {
     enableUnfree    = true;
     enableGtk3      = true;
     enableFfmpeg    = true;
@@ -27,13 +29,13 @@ let
     pythonPackages  = pythonPackages;
   };
 
-  opencv4_python_override = pythonPackages.opencv4.override {
+  opencv4_python = pythonPackages.opencv4.override {
     enableUnfree    = true;
     enableGtk3      = true;
     enableFfmpeg    = true;
   };
 
-  polybar_override = unstable.polybar.override {
+  polybar = unstable.polybar.override {
     i3Support = true;
   };
 
@@ -58,7 +60,7 @@ let
   scrobblez_python = pkgs_custom.pythonPackages.scrobblez;
 
 in
-with pkgs; [
+[
 
   # custom packages
   frece
@@ -162,7 +164,7 @@ with pkgs; [
     numba
     numpy
     omegaconf
-    opencv4_python_override
+    opencv4_python
     pandas
     pillow
     pip
@@ -223,7 +225,7 @@ with pkgs; [
   musl
   nvidia-optical-flow-sdk
   openblas
-  opencv4_override
+  opencv4
   tbb
   vulkan-headers
 
@@ -286,7 +288,7 @@ with pkgs; [
   spotify-tui
 
   # applications/editors
-  unstable.neovim
+  neovim
   vim
   vscode
 
@@ -386,7 +388,7 @@ with pkgs; [
   dolphin
   i3lock-color
   lxappearance
-  polybar_override
+  polybar
   qt5ct
   xfce.tumbler
   xfce.xfconf
