@@ -174,7 +174,7 @@ in
     pandas
     pillow
     pip
-    # poetry
+    poetry
     ptpython
     pygobject3
     pynvim
