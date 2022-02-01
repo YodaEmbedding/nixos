@@ -157,6 +157,7 @@ in
   lua5_1
   luajit
   nim
+  ruby
   rustc
   texlive.combined.scheme-full
 
