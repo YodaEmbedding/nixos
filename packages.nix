@@ -176,6 +176,7 @@ in
     pillow
     pip
     poetry
+    praw
     ptpython
     pygobject3
     pynvim
