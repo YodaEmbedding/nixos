@@ -179,16 +179,16 @@ in
     praw
     ptpython
     pygobject3
-    pynvim
     pyinotify
     pylast
+    pynvim
     pytest
     pytorch
     pytorch-lightning
     requests
+    scikit-learn
     scipy
     seaborn
-    scikit-learn
     snakeviz
     tensorflow-tensorboard
     tensorflowWithCuda
