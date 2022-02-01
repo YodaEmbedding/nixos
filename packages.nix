@@ -439,4 +439,9 @@ in
   lutris
   steam
 
+  # games/chess
+  fairymax
+  stockfish
+  xboard
+
 ]
