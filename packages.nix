@@ -330,6 +330,7 @@ in
   # applications/networking/instant-messengers
   discord
   skypeforlinux
+  teams
   zoom-us
 
   # applications/terminal-emulators
