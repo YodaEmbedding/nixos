@@ -22,6 +22,7 @@ let
   neovim = unstable.neovim;
   polybar_unstable = unstable.polybar;
   spotifyd_unstable = unstable.spotifyd;
+  wandb = pythonPackages_unstable.wandb;
 
   # OVERRIDES:
 
@@ -199,6 +200,7 @@ in
     tomlkit
     torchvision
     virtualenv
+    wandb
 
     # custom
     # arxiv
