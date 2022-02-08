@@ -17,9 +17,11 @@ let
   pythonPackages = python3Packages;
   python3Packages = python39Packages;
 
-  # OVERRIDES:
+  # UNSTABLE:
 
   neovim = unstable.neovim;
+
+  # OVERRIDES:
 
   opencv4 = pkgs.opencv4.override {
     enableUnfree    = true;
