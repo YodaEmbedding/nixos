@@ -18,6 +18,8 @@ let
   # UNSTABLE:
 
   neovim = unstable.neovim;
+  polybar_unstable = unstable.polybar;
+  spotifyd_unstable = unstable.spotifyd;
 
   # OVERRIDES:
 
@@ -35,11 +37,11 @@ let
     enableFfmpeg    = true;
   };
 
-  polybar = unstable.polybar.override {
+  polybar = polybar_unstable.override {
     i3Support = true;
   };
 
-  spotifyd = unstable.spotifyd.override {
+  spotifyd = spotifyd_unstable.override {
     withPulseAudio  = true;
     withMpris       = true;
     withKeyring     = true;
