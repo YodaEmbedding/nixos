@@ -17,6 +17,7 @@ let
 
   # UNSTABLE:
 
+  firefox = unstable.firefox;
   neovim = unstable.neovim;
   polybar_unstable = unstable.polybar;
   spotifyd_unstable = unstable.spotifyd;
