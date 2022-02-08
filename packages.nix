@@ -14,6 +14,7 @@ let
 
   python = python39;
   pythonPackages = python39Packages;
+  pythonPackages_unstable = unstable.python39Packages;
 
   # UNSTABLE:
 
