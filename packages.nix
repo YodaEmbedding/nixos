@@ -12,10 +12,8 @@ let
     config = config.nixpkgs.config;
   };
 
-  python = python3;
-  python3 = python39;
-  pythonPackages = python3Packages;
-  python3Packages = python39Packages;
+  python = python39;
+  pythonPackages = python39Packages;
 
   # UNSTABLE:
 
