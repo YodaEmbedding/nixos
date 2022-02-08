@@ -444,4 +444,7 @@ in
   stockfish
   xboard
 
+  # NUR
+  # pkgs.nur.repos.bhipple.talon
+
 ]
