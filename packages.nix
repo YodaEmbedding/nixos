@@ -94,7 +94,7 @@ in
 
   # tools/graphics
   vulkan-tools
-  waifu2x-converter-cpp
+  waifu2x-converter-cpp  # depends: opencv
 
   # tools/networking
   fping
@@ -188,7 +188,7 @@ in
     pylast
     pynvim
     pytest
-    pytorch
+    pytorch  # depends: cuda
     pytorch-lightning
     requests
     scikit-learn
@@ -196,7 +196,7 @@ in
     seaborn
     snakeviz
     tensorflow-tensorboard
-    tensorflowWithCuda
+    tensorflowWithCuda  # depends: cuda
     tomlkit
     torchvision
     virtualenv
@@ -286,7 +286,7 @@ in
   # audio
   alsa-utils
   cadence
-  gst_all_1.gst-plugins-bad
+  gst_all_1.gst-plugins-bad  # depends: opencv
   gst_all_1.gst-plugins-base
   gst_all_1.gst-plugins-good
   gst_all_1.gst-plugins-ugly
@@ -320,7 +320,7 @@ in
   imagemagick
   krita
   photoqt
-  qimgv
+  qimgv  # depends: opencv
 
   # tools/graphics
   exiftool
