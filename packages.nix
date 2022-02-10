@@ -358,6 +358,7 @@ in
   font-manager
   foxitreader
   masterpdfeditor
+  obsidian
   okular
   ranger
   redshift
