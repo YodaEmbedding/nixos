@@ -61,6 +61,7 @@ let
     ;
 
   inherit (pkgs_custom.pythonPackages)
+    arxiv
     catalyst
     compressai
     metadata-filter
@@ -203,7 +204,7 @@ in
     wandb
 
     # custom
-    # arxiv
+    arxiv
     catalyst
     compressai
     metadata-filter

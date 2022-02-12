@@ -7,6 +7,16 @@
 
 with pkgs;
 rec {
+  arxiv = with pythonPackages;
+    pkgs.callPackage ./arxiv {
+      inherit
+        lib
+        buildPythonPackage
+        fetchPypi
+        feedparser
+        ;
+    };
+
   catalyst = with pythonPackages;
     pkgs.callPackage ./catalyst {
       inherit
