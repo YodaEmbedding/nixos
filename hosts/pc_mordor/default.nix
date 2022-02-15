@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -8,6 +9,7 @@
   imports = [
     ./file_systems.nix
     ./hardware.nix
+    inputs.nixos-fhs-compat.nixosModules.combined
   ];
 
   networking.hostName = "PC-Mordor-NixOS";
@@ -29,4 +31,9 @@
       enable = true;
     };
   };
+
+  environment.fhs.enable = true;
+  # environment.fhs.linkLibs = true;
+  # environment.lsb.enable = true;
+  # environment.lsb.support32Bit = true;
 }
