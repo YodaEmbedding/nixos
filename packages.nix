@@ -176,6 +176,7 @@ in
     dbus-python
     isort
     matplotlib
+    mlflow
     numba
     numpy
     omegaconf
