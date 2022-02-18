@@ -2,15 +2,15 @@
   "nodes": {
     "nixos-fhs-compat": {
       "locked": {
-        "lastModified": 1638624912,
-        "narHash": "sha256-+luMnWfRmPLgIh63AONik/9pvwxUjjK8PaMVqfJEUzE=",
-        "owner": "balsoft",
+        "lastModified": 1644904283,
+        "narHash": "sha256-Z8pS1KpJvqG82iYU4CcYV31ZzJdHAxRlUaHMk8YCkgE=",
+        "owner": "YodaEmbedding",
         "repo": "nixos-fhs-compat",
-        "rev": "0cf9397b825686b3cfa34a0d0bdcdeabcbb8ea03",
+        "rev": "719ac4eb2121f179a84b87cc312dbdeadddfc3fc",
         "type": "github"
       },
       "original": {
-        "owner": "balsoft",
+        "owner": "YodaEmbedding",
         "repo": "nixos-fhs-compat",
         "type": "github"
       }

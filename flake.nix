@@ -8,7 +8,7 @@
     nur.url = "github:nix-community/NUR";
     # home-manager.url = "github:nix-community/home-manager/release-21.11";
     # home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-fhs-compat.url = "github:balsoft/nixos-fhs-compat";
+    nixos-fhs-compat.url = "github:YodaEmbedding/nixos-fhs-compat";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nur, nixos-fhs-compat } @inputs:
