@@ -124,6 +124,7 @@ in
 
   # tools/misc + tools/*
   bat
+  direnv
   fasd
   fd
   file
@@ -134,6 +135,7 @@ in
   man
   moreutils
   neofetch
+  nix-direnv
   parted
   perlPackages.vidir
   pplatex
