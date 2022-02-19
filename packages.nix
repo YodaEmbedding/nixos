@@ -26,6 +26,25 @@ let
 
   # OVERRIDES:
 
+  mlflow = pythonPackages.mlflow.overrideAttrs (oldAttrs: {
+    meta.broken = false;
+
+    propagatedBuildInputs = with pythonPackages;
+      oldAttrs.propagatedBuildInputs ++ [
+        prometheus-flask-exporter
+        importlib-metadata
+      ];
+
+    patches = [
+      # Relex alembic version, https://github.com/mlflow/mlflow/pull/5245
+      (fetchpatch {
+        name = "relax-alembic-version.patch";
+        url = "https://github.com/mlflow/mlflow/commit/945eb4b67f315c0b2c4018b1df006fde910f115f.patch";
+        sha256 = "sha256-jETVEPzlNe0PvFZVOi1SwgJELfx/KCeq6REL3vl+YT0=";
+      })
+    ];
+  });
+
   opencv4 = pkgs.opencv4.override {
     enableUnfree    = true;
     enableGtk3      = true;
