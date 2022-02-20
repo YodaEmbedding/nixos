@@ -84,6 +84,7 @@ let
     catalyst
     compressai
     metadata-filter
+    mlflow_python
     mpris2
     pytorch-msssim
     ;
@@ -195,7 +196,7 @@ in
     dbus-python
     isort
     matplotlib
-    mlflow
+    mlflow_python
     numba
     numpy
     omegaconf

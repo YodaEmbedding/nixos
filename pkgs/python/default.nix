@@ -62,6 +62,40 @@ rec {
       inherit lib buildPythonPackage fetchPypi;
     };
 
+  mlflow_python = with pythonPackages;
+    pkgs.callPackage ./mlflow {
+      inherit
+        lib
+        buildPythonPackage
+        fetchPypi
+        isPy27
+        fetchpatch
+        alembic
+        click
+        cloudpickle
+        requests
+        six
+        flask
+        numpy
+        pandas
+        python-dateutil
+        protobuf
+        GitPython
+        pyyaml
+        querystring_parser
+        simplejson
+        docker
+        databricks-cli
+        entrypoints
+        sqlparse
+        sqlalchemy
+        gorilla
+        gunicorn
+        prometheus-flask-exporter
+        importlib-metadata
+        ;
+    };
+
   mpris2 = with pythonPackages;
     pkgs.callPackage ./mpris2 {
       inherit lib buildPythonPackage fetchPypi dbus-python;
