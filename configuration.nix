@@ -9,13 +9,13 @@
   imports = [
     ./hardware-configuration.nix
     ./hosts/pc_mordor
-    ./compositor.nix
-    ./fonts.nix
-    ./networking.nix
-    ./nixpkgs_conf.nix
-    ./sound.nix
-    ./users.nix
-    ./xdg
+    ./modules/compositor.nix
+    ./modules/fonts.nix
+    ./modules/networking.nix
+    ./modules/nixpkgs_conf.nix
+    ./modules/sound.nix
+    ./modules/users.nix
+    ./modules/xdg
   ];
 
   services = {
