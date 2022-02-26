@@ -11,7 +11,13 @@
     nixos-fhs-compat.url = "github:YodaEmbedding/nixos-fhs-compat";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nur, nixos-fhs-compat } @inputs:
+  outputs = {
+    self,
+    nixos-fhs-compat,
+    nixpkgs,
+    nixpkgs-unstable,
+    nur,
+  } @inputs:
   {
     nixosConfigurations.PC-Mordor-NixOS = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
