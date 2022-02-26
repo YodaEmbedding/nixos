@@ -1,4 +1,5 @@
 {
+  self,
   config,
   pkgs,
   inputs,
@@ -17,6 +18,10 @@
         inherit (super.picom-next) pname version src meta;
       });
     })
+    inputs.nix-alien.overlay
+    # inputs.nix-ld.nixosModules.nix-ld
+    # self.inputs.nix-alien.overlay
+    # self.inputs.nix-ld.nixosModules.nix-ld
     inputs.nur.overlay
   ];
 }

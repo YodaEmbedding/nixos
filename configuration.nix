@@ -1,4 +1,5 @@
 {
+  self,
   config,
   pkgs,
   inputs,
@@ -16,6 +17,7 @@
     ./modules/sound.nix
     ./modules/users.nix
     ./modules/xdg
+    # inputs.nix-ld.nixosModules.nix-ld
   ];
 
   services = {

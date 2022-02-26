@@ -476,6 +476,11 @@ in
   stockfish
   xboard
 
+  # Other
+  nix-alien
+  nix-index
+  nix-index-update
+
   # NUR
   # pkgs.nur.repos.bhipple.talon
 
