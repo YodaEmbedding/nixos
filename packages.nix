@@ -81,6 +81,7 @@ let
     ;
 
   inherit (pkgs_custom.pythonPackages)
+    aim
     arxiv
     catalyst
     compressai
@@ -229,6 +230,7 @@ in
     wandb
 
     # custom
+    aim
     arxiv
     catalyst
     compressai

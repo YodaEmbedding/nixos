@@ -7,6 +7,72 @@
 
 with pkgs;
 rec {
+
+  aim = with pythonPackages;
+    pkgs.callPackage ./aim {
+      inherit
+        lib
+        buildPythonPackage
+        fetchFromGitHub
+        fetchPypi
+        cython
+        aimrecords
+        aimrocks
+        cachetools
+        click
+        cryptography
+        filelock
+        GitPython
+        numpy
+        packaging
+        protobuf
+        psutil
+        py3nvml
+        RestrictedPython
+        tqdm
+        aiofiles
+        alembic
+        async-exit-stack
+        async_generator
+        fastapi
+        jinja2
+        pytz
+        sqlalchemy
+        uvicorn
+        pillow
+        grpcio
+        pytest
+        ;
+    };
+
+  aimrecords = with pythonPackages;
+    pkgs.callPackage ./aimrecords {
+      inherit
+        lib
+        buildPythonPackage
+        fetchPypi
+        base58
+        ;
+    };
+
+  aimrocks = with pythonPackages;
+    pkgs.callPackage ./aimrocks {
+      inherit
+        lib
+        buildPythonPackage
+        fetchFromGitHub
+        cython
+        setuptools
+        pytest
+        ;
+      rocksdb = pkgs.rocksdb;
+      bzip2   = pkgs.bzip2;
+      lz4     = pkgs.lz4;
+      snappy  = pkgs.snappy;
+      zlib    = pkgs.zlib;
+      zstd    = pkgs.zstd;
+    };
+
   arxiv = with pythonPackages;
     pkgs.callPackage ./arxiv {
       inherit
@@ -14,6 +80,24 @@ rec {
         buildPythonPackage
         fetchPypi
         feedparser
+        ;
+    };
+
+  async-exit-stack = with pythonPackages;
+    pkgs.callPackage ./async-exit-stack {
+      inherit
+        lib
+        buildPythonPackage
+        fetchPypi
+        ;
+    };
+
+  async-generator = with pythonPackages;
+    pkgs.callPackage ./async-generator {
+      inherit
+        lib
+        buildPythonPackage
+        fetchPypi
         ;
     };
 
@@ -101,6 +185,17 @@ rec {
       inherit lib buildPythonPackage fetchPypi dbus-python;
     };
 
+  py3nvml = with pythonPackages;
+    pkgs.callPackage ./py3nvml {
+      inherit
+        lib
+        buildPythonPackage
+        fetchPypi
+        cudatoolkit
+        xmltodict
+        ;
+    };
+
   pytorch-msssim = with pythonPackages;
     pkgs.callPackage ./pytorch-msssim {
       inherit
@@ -108,6 +203,15 @@ rec {
         buildPythonPackage
         fetchPypi
         pytorch
+        ;
+    };
+
+  RestrictedPython = with pythonPackages;
+    pkgs.callPackage ./RestrictedPython {
+      inherit
+        lib
+        buildPythonPackage
+        fetchPypi
         ;
     };
 
