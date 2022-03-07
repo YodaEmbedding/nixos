@@ -158,6 +158,7 @@ in
   neofetch
   nix-direnv
   parted
+  pdftk
   perlPackages.vidir
   pplatex
   ripgrep
