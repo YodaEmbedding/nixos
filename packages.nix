@@ -252,11 +252,11 @@ in
   gtk3
   gvfs
   jasper
-  libGL
-  libGLU
   libcxx
   libcxxabi
   libfaketime
+  libGL
+  libGLU
   libgphoto2
   libinput
   libjpeg
