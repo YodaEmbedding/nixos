@@ -256,6 +256,7 @@ in
   libGLU
   libcxx
   libcxxabi
+  libfaketime
   libgphoto2
   libinput
   libjpeg
