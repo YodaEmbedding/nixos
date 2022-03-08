@@ -65,12 +65,14 @@ rec {
         setuptools
         pytest
         ;
-      rocksdb = pkgs.rocksdb;
-      bzip2   = pkgs.bzip2;
-      lz4     = pkgs.lz4;
-      snappy  = pkgs.snappy;
-      zlib    = pkgs.zlib;
-      zstd    = pkgs.zstd;
+      inherit (pkgs)
+        rocksdb
+        bzip2
+        lz4
+        snappy
+        zlib
+        zstd
+        ;
     };
 
   arxiv = with pythonPackages;

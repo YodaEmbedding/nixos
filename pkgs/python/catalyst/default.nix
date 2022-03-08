@@ -22,11 +22,6 @@ buildPythonPackage rec {
     sha256 = "sha256-d9lZngMGo8NfjcGwAiN9z2lN1xP6+2mcbM6NwJlVzLU=";
   };
 
-  # src = fetchPypi {
-  #   inherit pname version;
-  #   sha256 = "";
-  # };
-
   postUnpack = ''
     sed -i 's/tensorboardX<2.3.0>=2.1.0/tensorboardX<2.5.0>=2.1.0/' \
       "$sourceRoot/requirements/requirements.txt"
