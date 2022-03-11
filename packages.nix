@@ -263,6 +263,7 @@ in
   libllvm
   libnotify
   libpng
+  libsForQt5.qt5.qttools
   libtiff
   libwebp
   musl
