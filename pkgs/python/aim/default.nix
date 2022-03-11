@@ -33,11 +33,11 @@
 
 buildPythonPackage rec {
   pname = "aim";
-  version = "3.6.3";
+  version = "3.7.0";
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "sha256-d60W6c8VBhmcWuw3I09WB5SOtWFQrOfImA3a7GGM6XY=";
+    sha256 = "sha256-8FIhNRt5dULAGtFlI5zaQSdcOCnqOREFjUwMks4+osA=";
   };
 
   nativeBuildInputs = [
