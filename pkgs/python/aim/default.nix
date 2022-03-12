@@ -85,6 +85,10 @@ buildPythonPackage rec {
       -e "s:'fastapi.*':'fastapi':" \
       -e "s:'Cython==.*':'Cython>=0.29.24':" \
       "$sourceRoot/setup.py"
+
+    sed -i \
+      -e "s:b'""':():" \
+      "$sourceRoot/aim/sdk/repo.py"
   '';
 
   meta = with lib; {
