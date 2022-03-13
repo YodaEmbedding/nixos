@@ -2,6 +2,7 @@
 , buildPythonPackage
 , fetchFromGitHub
 , fetchPypi
+, accelerate
 , hydra-slayer
 , numpy
 , pytest
@@ -13,13 +14,13 @@
 
 buildPythonPackage rec {
   pname = "catalyst";
-  version = "21.11";
+  version = "22.02.1";
 
   src = fetchFromGitHub {
     owner = "catalyst-team";
     repo = "${pname}";
     rev = "v${version}";
-    sha256 = "sha256-d9lZngMGo8NfjcGwAiN9z2lN1xP6+2mcbM6NwJlVzLU=";
+    sha256 = "sha256-wwNsfgn+kUkrgIMF+towPpTvYGovTDbgrk1EHpcE+AI=";
   };
 
   postUnpack = ''
@@ -28,6 +29,7 @@ buildPythonPackage rec {
   '';
 
   propagatedBuildInputs = [
+    accelerate
     hydra-slayer
     numpy
     pytorch

@@ -8,6 +8,19 @@
 with pkgs;
 rec {
 
+  accelerate = with pythonPackages;
+    pkgs.callPackage ./accelerate {
+      inherit
+        lib
+        buildPythonPackage
+        fetchPypi
+        numpy
+        pytorch
+        pyyaml
+        pytest
+        ;
+    };
+
   aim = with pythonPackages;
     pkgs.callPackage ./aim {
       inherit
@@ -110,6 +123,7 @@ rec {
         buildPythonPackage
         fetchFromGitHub
         fetchPypi
+        accelerate
         hydra-slayer
         numpy
         pytest
