@@ -213,6 +213,7 @@ in
     pygobject3
     pyinotify
     pylast
+    pylint
     pynvim
     pytest
     pytorch  # depends: cuda
