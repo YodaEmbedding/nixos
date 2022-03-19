@@ -12,6 +12,7 @@
     isNormalUser = true;
     uid = 1000;
     extraGroups = [
+      "docker"
       "plugdev"
       "vboxusers"
       "wheel"
