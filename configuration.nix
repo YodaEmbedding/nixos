@@ -88,7 +88,12 @@
     '';
   };
 
-  virtualisation.docker.enable = true;
+  systemd.enableUnifiedCgroupHierarchy = false;
+
+  virtualisation.docker = {
+    enable = true;
+    enableNvidia = true;
+  };
 
   virtualisation.virtualbox.host = {
     enable = true;
