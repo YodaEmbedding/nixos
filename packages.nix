@@ -216,8 +216,8 @@ in
     pylint
     pynvim
     pytest
-    # pytorch  # depends: cuda
-    # pytorch-lightning
+    pytorch  # depends: cuda
+    pytorch-lightning
     requests
     scikit-learn
     scipy
@@ -226,18 +226,18 @@ in
     tensorflow-tensorboard
     # tensorflowWithCuda  # depends: cuda
     tomlkit
-    # torchvision
+    torchvision
     virtualenv
     wandb
 
     # custom
     aim
     arxiv
-    # catalyst
-    # compressai
+    catalyst
+    compressai
     metadata-filter
     mpris2
-    # pytorch-msssim
+    pytorch-msssim
     scrobblez_python
     # torchinfo
   ]))
