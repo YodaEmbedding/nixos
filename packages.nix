@@ -216,28 +216,28 @@ in
     pylint
     pynvim
     pytest
-    pytorch  # depends: cuda
-    pytorch-lightning
+    # pytorch  # depends: cuda
+    # pytorch-lightning
     requests
     scikit-learn
     scipy
     seaborn
     snakeviz
     tensorflow-tensorboard
-    tensorflowWithCuda  # depends: cuda
+    # tensorflowWithCuda  # depends: cuda
     tomlkit
-    torchvision
+    # torchvision
     virtualenv
     wandb
 
     # custom
     aim
     arxiv
-    catalyst
-    compressai
+    # catalyst
+    # compressai
     metadata-filter
     mpris2
-    pytorch-msssim
+    # pytorch-msssim
     scrobblez_python
     # torchinfo
   ]))
@@ -292,7 +292,7 @@ in
   pkg-config
 
   # language servers
-  haskell-language-server
+  # haskell-language-server
   nodePackages.bash-language-server
   nodePackages.diagnostic-languageserver
   nodePackages.pyright
@@ -397,7 +397,7 @@ in
   zathura
 
   # applications/*
-  libreoffice-fresh
+  # libreoffice-fresh
 
   # applications/window-managers
   i3
