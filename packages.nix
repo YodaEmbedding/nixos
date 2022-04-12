@@ -224,7 +224,7 @@ in
     seaborn
     snakeviz
     tensorflow-tensorboard
-    # tensorflowWithCuda  # depends: cuda
+    tensorflowWithCuda  # depends: cuda
     tomlkit
     torchvision
     virtualenv
@@ -397,7 +397,7 @@ in
   zathura
 
   # applications/*
-  # libreoffice-fresh
+  libreoffice-fresh
 
   # applications/window-managers
   i3
