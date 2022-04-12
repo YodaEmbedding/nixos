@@ -19,6 +19,7 @@ let
   # UNSTABLE:
 
   discord = unstable.discord;
+  google-chrome = unstable.google-chrome;
   firefox = unstable.firefox;
   neovim = unstable.neovim;
   polybar_unstable = unstable.polybar;
