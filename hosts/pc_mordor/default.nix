@@ -10,6 +10,7 @@
     ./file_systems.nix
     ./hardware.nix
     ./hardware-configuration.nix
+    ./networking.nix
     inputs.nixos-fhs-compat.nixosModules.combined
   ];
 

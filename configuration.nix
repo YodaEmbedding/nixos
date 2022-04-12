@@ -11,7 +11,6 @@
     ./hosts/pc_mordor
     ./modules/compositor.nix
     ./modules/fonts.nix
-    ./modules/networking.nix
     ./modules/nixpkgs_conf.nix
     ./modules/sound.nix
     ./modules/users.nix
