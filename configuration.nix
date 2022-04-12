@@ -8,7 +8,6 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
     ./hosts/pc_mordor
     ./modules/compositor.nix
     ./modules/fonts.nix

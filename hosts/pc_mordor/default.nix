@@ -9,6 +9,7 @@
   imports = [
     ./file_systems.nix
     ./hardware.nix
+    ./hardware-configuration.nix
     inputs.nixos-fhs-compat.nixosModules.combined
   ];
 
