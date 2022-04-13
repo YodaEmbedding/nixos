@@ -52,6 +52,14 @@ let
     withKeyring     = true;
   };
 
+  talon = pkgs.nur.repos.bhipple.talon.overrideAttrs (oldAttrs: {
+    version = "public-latest";
+    src = fetchurl {
+      sha256 = "sha256-T/zf7Gru7xOUivP8XUThy5mbcVN9d/KMLVkCDztmYuQ=";
+      url = "https://talonvoice.com/dl/latest/talon-linux.tar.xz";
+    };
+  });
+
   # CUSTOM PACKAGES:
 
   pkgs_custom = (import ./pkgs) { inherit config pkgs pythonPackages; };
@@ -470,6 +478,6 @@ in
   nix-index-update
 
   # NUR
-  # pkgs.nur.repos.bhipple.talon
+  talon
 
 ]
