@@ -103,6 +103,7 @@ in
   zip
 
   # tools/filesystems
+  lfs
   ntfs3g
 
   # tools/graphics
