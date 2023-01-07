@@ -134,6 +134,8 @@ in
   cron
   efibootmgr
   htop
+  pciutils
+  usbutils
 
   # tools/misc + tools/*
   bat
