@@ -5,6 +5,13 @@
 }:
 
 {
+  services = {
+    openssh = {
+      enable = true;
+      ports = [42666];
+    };
+  };
+
   networking = {
     # Enables wireless support via wpa_supplicant.
     # wireless.enable = true;
